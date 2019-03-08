@@ -2,17 +2,18 @@ package main
 
 import (
 	"fmt"
+	"io"
+	"os"
+
 	"github.com/cep21/cfexecute2/internal/awscache"
 	"github.com/cep21/cfexecute2/internal/cleanup"
 	"github.com/cep21/cfexecute2/internal/cobracmds"
 	"github.com/cep21/cfexecute2/internal/ctxfinder"
 	"github.com/cep21/cfexecute2/internal/logger"
 	"github.com/cep21/cfexecute2/internal/templatereader"
-	"io"
-	"os"
 )
 
-var App = Application{
+var App = Application{ //nolint
 	Out: os.Stdout,
 }
 

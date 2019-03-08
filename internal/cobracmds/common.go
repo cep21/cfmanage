@@ -5,13 +5,14 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"io"
+	"strings"
+	"time"
+
 	"github.com/cep21/cfexecute2/internal/ctxfinder"
 	"github.com/cep21/cfexecute2/internal/templatereader"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
-	"io"
-	"strings"
-	"time"
 )
 
 func commonRunCommand(f *ctxfinder.ContextFinder, generateModel func(ctx context.Context, cmd *cobra.Command, args []string) (HumanPrintable, error), useJSON *bool) func(cmd *cobra.Command, args []string) error {
@@ -26,7 +27,7 @@ func commonRunCommand(f *ctxfinder.ContextFinder, generateModel func(ctx context
 }
 
 func display(out io.Writer, useJSON *bool, data HumanPrintable) error {
-	if *useJSON == true {
+	if *useJSON {
 		return json.NewEncoder(out).Encode(data)
 	}
 	return data.HumanReadable(out)
@@ -66,15 +67,15 @@ func emptyOnNil(s *string) string {
 	return *s
 }
 
-func validateTemplateParam(T *templatereader.TemplateFinder) func(*cobra.Command, []string) error {
+func validateTemplateParam(tfinder *templatereader.TemplateFinder) func(*cobra.Command, []string) error {
 	return func(_ *cobra.Command, args []string) error {
 		if len(args) != 2 {
 			return errors.New("expect exactly two arguments")
 		}
-		if err := validateTemplate(T, args[0]); err != nil {
+		if err := validateTemplate(tfinder, args[0]); err != nil {
 			return err
 		}
-		if err := validateParams(T, args[0], args[1]); err != nil {
+		if err := validateParams(tfinder, args[0], args[1]); err != nil {
 			return err
 		}
 		return nil

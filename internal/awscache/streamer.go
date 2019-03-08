@@ -2,10 +2,11 @@ package awscache
 
 import (
 	"context"
-	"github.com/aws/aws-sdk-go/service/cloudformation"
-	"github.com/pkg/errors"
 	"sync"
 	"time"
+
+	"github.com/aws/aws-sdk-go/service/cloudformation"
+	"github.com/pkg/errors"
 )
 
 // StackStreamer sends cloudformation events about a stack into stdout

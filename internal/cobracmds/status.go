@@ -2,6 +2,9 @@ package cobracmds
 
 import (
 	"context"
+	"io"
+	"strconv"
+
 	"github.com/aws/aws-sdk-go/service/cloudformation"
 	"github.com/cep21/cfexecute2/internal/awscache"
 	"github.com/cep21/cfexecute2/internal/cleanup"
@@ -12,8 +15,6 @@ import (
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 	"golang.org/x/sync/errgroup"
-	"io"
-	"strconv"
 )
 
 type statusCommand struct {
@@ -81,16 +82,9 @@ type stackStatus struct {
 	changesetInput *templatereader.ChangesetInput
 }
 
-func (s stackStatus) goodStatus() bool {
-	if s.StackStatus == "CREATE_COMPLETE" || s.StackStatus == "UPDATE_COMPLETE" {
-		return true
-	}
-	return false
-}
-
-func populateStatusCommand(ctx context.Context, createTemplate *templatereader.CreateChangeSetTemplate, log *logger.Logger, awsCache *awscache.AWSCache, T *templatereader.TemplateFinder, t string, p string) (stackStatus, error) {
+func populateStatusCommand(ctx context.Context, createTemplate *templatereader.CreateChangeSetTemplate, log *logger.Logger, awsCache *awscache.AWSCache, tfinder *templatereader.TemplateFinder, t string, p string) (stackStatus, error) {
 	log.Log(2, "Listing params %s", p)
-	fname := T.ParameterFilename(t, p)
+	fname := tfinder.ParameterFilename(t, p)
 	in, err := templatereader.LoadCreateChangeSet(fname, createTemplate, log)
 	if err != nil {
 		return stackStatus{
@@ -127,26 +121,25 @@ func populateStatusCommand(ctx context.Context, createTemplate *templatereader.C
 			cfStack:        statStatus,
 			changesetInput: in,
 		}, nil
-	} else {
-		out, err := ses.CreateChangesetWaitForStatus(ctx, &in.CreateChangeSetInput)
-		if err != nil {
-			return stackStatus{}, err
-		}
-		return stackStatus{
-			Description:    emptyOnNil(statStatus.Description),
-			LastUpdated:    emptyOnNilTime(statStatus.LastUpdatedTime),
-			Template:       t,
-			StackFileName:  fname,
-			StackName:      *in.StackName,
-			StackStatus:    *statStatus.StackStatus,
-			AccountID:      readable(ses.AccountID()),
-			Region:         ses.Region(),
-			ChangeCount:    strconv.Itoa(len(out.Changes)),
-			cfStack:        statStatus,
-			changeset:      out,
-			changesetInput: in,
-		}, nil
 	}
+	out, err := ses.CreateChangesetWaitForStatus(ctx, &in.CreateChangeSetInput)
+	if err != nil {
+		return stackStatus{}, err
+	}
+	return stackStatus{
+		Description:    emptyOnNil(statStatus.Description),
+		LastUpdated:    emptyOnNilTime(statStatus.LastUpdatedTime),
+		Template:       t,
+		StackFileName:  fname,
+		StackName:      *in.StackName,
+		StackStatus:    *statStatus.StackStatus,
+		AccountID:      readable(ses.AccountID()),
+		Region:         ses.Region(),
+		ChangeCount:    strconv.Itoa(len(out.Changes)),
+		cfStack:        statStatus,
+		changeset:      out,
+		changesetInput: in,
+	}, nil
 }
 
 func (s *statusCommand) model(ctx context.Context, cmd *cobra.Command, args []string) (HumanPrintable, error) {
@@ -184,9 +177,7 @@ func (s *statusCommand) model(ctx context.Context, cmd *cobra.Command, args []st
 		return nil, err
 	}
 	for _, st := range statuses {
-		for _, st2 := range st {
-			ret.Statuses = append(ret.Statuses, st2)
-		}
+		ret.Statuses = append(ret.Statuses, st...)
 	}
 	return &ret, nil
 }

@@ -3,6 +3,9 @@ package cobracmds
 import (
 	"context"
 	"fmt"
+	"io"
+	"time"
+
 	"github.com/cep21/cfexecute2/internal/awscache"
 	"github.com/cep21/cfexecute2/internal/cleanup"
 	"github.com/cep21/cfexecute2/internal/ctxfinder"
@@ -10,8 +13,6 @@ import (
 	"github.com/cep21/cfexecute2/internal/templatereader"
 	"github.com/olekukonko/tablewriter"
 	"github.com/spf13/cobra"
-	"io"
-	"time"
 )
 
 type inspectCommand struct {
@@ -36,8 +37,8 @@ func (s *inspectCommand) Cobra() *cobra.Command {
 	return cmd
 }
 
-func validateTemplate(T *templatereader.TemplateFinder, t string) error {
-	validTemplates, err := T.ValidateTemplate(t)
+func validateTemplate(tfinder *templatereader.TemplateFinder, t string) error {
+	validTemplates, err := tfinder.ValidateTemplate(t)
 	if err == nil {
 		return nil
 	}
@@ -48,8 +49,8 @@ func validateTemplate(T *templatereader.TemplateFinder, t string) error {
 	return err
 }
 
-func validateParams(T *templatereader.TemplateFinder, t string, p string) error {
-	validParams, err := T.ValidateParameterFile(t, p)
+func validateParams(tfinder *templatereader.TemplateFinder, t string, p string) error {
+	validParams, err := tfinder.ValidateParameterFile(t, p)
 	if err == nil {
 		return nil
 	}
@@ -119,8 +120,8 @@ func (s *inspectCommand) model(ctx context.Context, cmd *cobra.Command, args []s
 	return populateInspectCommand(ctx, s.Ctx, s.Logger, s.AWSCache, s.T, template, params)
 }
 
-func populateInspectCommand(ctx context.Context, createTemplate *templatereader.CreateChangeSetTemplate, log *logger.Logger, awsCache *awscache.AWSCache, T *templatereader.TemplateFinder, template string, params string) (*inspectCommandModel, error) {
-	stat, err := populateStatusCommand(ctx, createTemplate, log, awsCache, T, template, params)
+func populateInspectCommand(ctx context.Context, createTemplate *templatereader.CreateChangeSetTemplate, log *logger.Logger, awsCache *awscache.AWSCache, tfinder *templatereader.TemplateFinder, template string, params string) (*inspectCommandModel, error) {
+	stat, err := populateStatusCommand(ctx, createTemplate, log, awsCache, tfinder, template, params)
 	if err != nil {
 		return nil, err
 	}

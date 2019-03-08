@@ -1,14 +1,15 @@
 package cobracmds
 
 import (
+	"io"
+	"time"
+
 	"github.com/cep21/cfexecute2/internal/awscache"
 	"github.com/cep21/cfexecute2/internal/cleanup"
 	"github.com/cep21/cfexecute2/internal/ctxfinder"
 	"github.com/cep21/cfexecute2/internal/logger"
 	"github.com/cep21/cfexecute2/internal/templatereader"
 	"github.com/spf13/cobra"
-	"io"
-	"time"
 )
 
 type RootCommand struct {
@@ -20,9 +21,6 @@ type RootCommand struct {
 	JSONFormat    bool
 	Cleanup       *cleanup.Cleanup
 	ContextFinder *ctxfinder.ContextFinder
-	endTime       time.Time
-	verbosity     int
-	dir           string
 }
 
 func (s *RootCommand) Cobra() *cobra.Command {

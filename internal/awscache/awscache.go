@@ -2,6 +2,11 @@ package awscache
 
 import (
 	"context"
+	"strconv"
+	"strings"
+	"sync"
+	"time"
+
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/cloudformation"
@@ -10,10 +15,6 @@ import (
 	"github.com/cep21/cfexecute2/internal/logger"
 	"github.com/cep21/cfexecute2/internal/oncecache"
 	"github.com/pkg/errors"
-	"strconv"
-	"strings"
-	"sync"
-	"time"
 )
 
 type cacheKey struct {
@@ -108,12 +109,12 @@ func (a *AWSClients) DescribeStack(ctx context.Context, name string) (*cloudform
 	return res.Stacks[0], nil
 }
 
-func guessChangesetType(ctx context.Context, cloudformationClient *cloudformation.CloudFormation, in *cloudformation.CreateChangeSetInput) (*cloudformation.CreateChangeSetInput, error) {
+func guessChangesetType(ctx context.Context, cloudformationClient *cloudformation.CloudFormation, in *cloudformation.CreateChangeSetInput) *cloudformation.CreateChangeSetInput {
 	if in == nil || in.ChangeSetType == nil {
-		return in, nil
+		return in
 	}
 	if *in.ChangeSetType != "GUESS" {
-		return in, nil
+		return in
 	}
 	_, err := cloudformationClient.DescribeStacksWithContext(ctx, &cloudformation.DescribeStacksInput{
 		StackName: in.StackName,
@@ -124,7 +125,7 @@ func guessChangesetType(ctx context.Context, cloudformationClient *cloudformatio
 	} else {
 		in.ChangeSetType = aws.String("UPDATE")
 	}
-	return in, nil
+	return in
 }
 
 func (a *AWSClients) CreateChangesetWaitForStatus(ctx context.Context, in *cloudformation.CreateChangeSetInput) (*cloudformation.DescribeChangeSetOutput, error) {
@@ -133,10 +134,7 @@ func (a *AWSClients) CreateChangesetWaitForStatus(ctx context.Context, in *cloud
 	}
 	in.ClientToken = aws.String(a.token())
 	cf := cloudformation.New(a.session)
-	in, err := guessChangesetType(ctx, cf, in)
-	if err != nil {
-		return nil, err
-	}
+	in = guessChangesetType(ctx, cf, in)
 	res, err := cf.CreateChangeSetWithContext(ctx, in)
 	if err != nil {
 		if strings.Contains(err.Error(), "AlreadyExistsException") {
@@ -202,9 +200,9 @@ func (a *AWSClients) waitForChangesetToFinishCreating(ctx context.Context, pollI
 }
 
 // waitForTerminalState loops forever until either the context ends, or something fails
-func (t *AWSClients) WaitForTerminalState(ctx context.Context, stackID string, pollInterval time.Duration, log *logger.Logger) error {
+func (a *AWSClients) WaitForTerminalState(ctx context.Context, stackID string, pollInterval time.Duration, log *logger.Logger) error {
 	lastStackStatus := ""
-	cfClient := cloudformation.New(t.session)
+	cfClient := cloudformation.New(a.session)
 	for {
 		select {
 		case <-ctx.Done():

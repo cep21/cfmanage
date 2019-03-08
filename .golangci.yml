@@ -33,7 +33,6 @@ linters:
     - maligned
     - depguard
     - misspell
-    - lll
     - unparam
     - nakedret
     - prealloc

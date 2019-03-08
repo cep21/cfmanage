@@ -2,10 +2,11 @@ package templatereader
 
 import (
 	"fmt"
-	"github.com/cep21/cfexecute2/internal/logger"
 	"io/ioutil"
 	"path"
 	"strings"
+
+	"github.com/cep21/cfexecute2/internal/logger"
 )
 
 type TemplateFinder struct {
@@ -40,11 +41,11 @@ func (t *TemplateFinder) ValidateParameterFile(tmpl string, param string) ([]str
 }
 
 func (t *TemplateFinder) ValidTemplatesAndParams() []string {
-	var ret []string
 	tmps, err := t.ListTemplates()
 	if err != nil {
 		return nil
 	}
+	ret := make([]string, 0, len(tmps))
 	ret = append(ret, tmps...)
 	for _, tp := range tmps {
 		params, err := t.ListParameters(tp)

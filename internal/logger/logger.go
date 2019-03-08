@@ -22,5 +22,5 @@ func (l *Logger) Log(verbosity int, msg string, args ...interface{}) {
 	}
 	l.mu.Lock()
 	defer l.mu.Unlock()
-	log.Printf(msg, args...)
+	l.log.Printf(msg, args...)
 }

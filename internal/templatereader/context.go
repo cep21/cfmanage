@@ -2,9 +2,10 @@ package templatereader
 
 import (
 	"encoding/json"
-	"github.com/pkg/errors"
 	"io/ioutil"
 	"os"
+
+	"github.com/pkg/errors"
 )
 
 // Ctx contains fun helper functions that make template generation easier

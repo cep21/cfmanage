@@ -3,6 +3,10 @@ package cobracmds
 import (
 	"context"
 	"fmt"
+	"io"
+	"os"
+	"time"
+
 	"github.com/aws/aws-sdk-go/service/cloudformation"
 	"github.com/cep21/cfexecute2/internal/awscache"
 	"github.com/cep21/cfexecute2/internal/cleanup"
@@ -13,9 +17,6 @@ import (
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 	"golang.org/x/sync/errgroup"
-	"io"
-	"os"
-	"time"
 )
 
 type executeCommand struct {

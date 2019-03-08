@@ -3,13 +3,14 @@ package templatereader
 import (
 	"bytes"
 	"encoding/json"
-	"github.com/aws/aws-sdk-go/service/cloudformation"
-	"github.com/cep21/cfexecute2/internal/logger"
-	"github.com/pkg/errors"
 	"io"
 	"io/ioutil"
 	"os"
 	"text/template"
+
+	"github.com/aws/aws-sdk-go/service/cloudformation"
+	"github.com/cep21/cfexecute2/internal/logger"
+	"github.com/pkg/errors"
 )
 
 type ChangesetInput struct {
