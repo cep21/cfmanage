@@ -27,7 +27,7 @@ func (s *StackStreamer) init() {
 }
 
 // Start streaming clouformation events
-func (s *StackStreamer) Start(ctx context.Context, clients *AWSClients, stackID string, streamInto chan <- *cloudformation.StackEvent) error {
+func (s *StackStreamer) Start(ctx context.Context, clients *AWSClients, stackID string, streamInto chan<- *cloudformation.StackEvent) error {
 	s.once.Do(s.init)
 	cloudformationClient := cloudformation.New(clients.session)
 	return s.streamStackEvents(ctx, cloudformationClient, stackID, clients.token(), streamInto)
@@ -41,7 +41,7 @@ func (s *StackStreamer) Close() error {
 }
 
 // streamStackEvents sends cloudformation events into a channel until told to stop.
-func (s *StackStreamer) streamStackEvents(ctx context.Context, cloudformationClient *cloudformation.CloudFormation, stackID string, clientRequestToken string, streamInto chan <- *cloudformation.StackEvent) error {
+func (s *StackStreamer) streamStackEvents(ctx context.Context, cloudformationClient *cloudformation.CloudFormation, stackID string, clientRequestToken string, streamInto chan<- *cloudformation.StackEvent) error {
 	var stopEventID string
 	for {
 		select {

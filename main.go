@@ -34,10 +34,10 @@ func (a *Application) main() {
 		T: &templatereader.TemplateFinder{
 			Logger: l,
 		},
-		Ctx: &templatereader.CreateChangeSetTemplate{},
-		Logger: l,
-		Out: a.Out,
-		Cleanup: Cleanup,
+		Ctx:           &templatereader.CreateChangeSetTemplate{},
+		Logger:        l,
+		Out:           a.Out,
+		Cleanup:       Cleanup,
 		ContextFinder: &ctxfinder.ContextFinder{},
 	}
 

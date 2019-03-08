@@ -27,18 +27,18 @@ type statusCommand struct {
 }
 
 func (s *statusCommand) Cobra() *cobra.Command {
-	cmd := &cobra.Command {
-		Use:   "status",
-		Short: "Display status of all cloudformation stacks",
-		Example: "cfexecute status",
+	cmd := &cobra.Command{
+		Use:       "status",
+		Short:     "Display status of all cloudformation stacks",
+		Example:   "cfexecute status",
 		ValidArgs: []string{},
-		Args: cobra.NoArgs,
+		Args:      cobra.NoArgs,
 	}
 	cmd.RunE = commonRunCommand(s.ContextFinder, s.model, s.JSON)
 	return cmd
 }
 
-func printStatus(out io.Writer, statuses[]stackStatus) {
+func printStatus(out io.Writer, statuses []stackStatus) {
 	table := tablewriter.NewWriter(out)
 	table.SetHeader([]string{"Template", "File name", "Stack Name", "Status", "Account ID", "Region", "Pending Changes", "Description", "Last Updated"})
 	for _, st := range statuses {
@@ -73,11 +73,11 @@ type stackStatus struct {
 	AccountID     string
 	Region        string
 	ChangeCount   string
-	Description string
-	LastUpdated string
+	Description   string
+	LastUpdated   string
 
-	cfStack *cloudformation.Stack
-	changeset *cloudformation.DescribeChangeSetOutput
+	cfStack        *cloudformation.Stack
+	changeset      *cloudformation.DescribeChangeSetOutput
 	changesetInput *templatereader.ChangesetInput
 }
 
@@ -94,9 +94,9 @@ func populateStatusCommand(ctx context.Context, createTemplate *templatereader.C
 	in, err := templatereader.LoadCreateChangeSet(fname, createTemplate, log)
 	if err != nil {
 		return stackStatus{
-			Template: t,
+			Template:      t,
 			StackFileName: fname,
-			StackStatus: err.Error(),
+			StackStatus:   err.Error(),
 		}, nil
 	}
 	ses, err := awsCache.Session(in.Profile, in.Region)
@@ -106,25 +106,25 @@ func populateStatusCommand(ctx context.Context, createTemplate *templatereader.C
 	statStatus, err := ses.DescribeStack(ctx, *in.StackName)
 	if err != nil {
 		return stackStatus{
-			Template: t,
-			StackFileName: fname,
-			StackName: *in.StackName,
-			StackStatus: err.Error(),
-			AccountID: readable(ses.AccountID()),
-			Region: ses.Region(),
-			cfStack: statStatus,
+			Template:       t,
+			StackFileName:  fname,
+			StackName:      *in.StackName,
+			StackStatus:    err.Error(),
+			AccountID:      readable(ses.AccountID()),
+			Region:         ses.Region(),
+			cfStack:        statStatus,
 			changesetInput: in,
 		}, nil
 	}
 	if statStatus == nil {
 		return stackStatus{
-			Template: t,
-			StackFileName: fname,
-			StackName: p,
-			StackStatus: "--DOES NOT EXIST--",
-			AccountID: readable(ses.AccountID()),
-			Region: ses.Region(),
-			cfStack: statStatus,
+			Template:       t,
+			StackFileName:  fname,
+			StackName:      p,
+			StackStatus:    "--DOES NOT EXIST--",
+			AccountID:      readable(ses.AccountID()),
+			Region:         ses.Region(),
+			cfStack:        statStatus,
 			changesetInput: in,
 		}, nil
 	} else {
@@ -133,17 +133,17 @@ func populateStatusCommand(ctx context.Context, createTemplate *templatereader.C
 			return stackStatus{}, err
 		}
 		return stackStatus{
-			Description: emptyOnNil(statStatus.Description),
-			LastUpdated: emptyOnNilTime(statStatus.LastUpdatedTime),
-			Template: t,
-			StackFileName: fname,
-			StackName: *in.StackName,
-			StackStatus: *statStatus.StackStatus,
-			AccountID: readable(ses.AccountID()),
-			Region: ses.Region(),
-			ChangeCount: strconv.Itoa(len(out.Changes)),
-			cfStack: statStatus,
-			changeset: out,
+			Description:    emptyOnNil(statStatus.Description),
+			LastUpdated:    emptyOnNilTime(statStatus.LastUpdatedTime),
+			Template:       t,
+			StackFileName:  fname,
+			StackName:      *in.StackName,
+			StackStatus:    *statStatus.StackStatus,
+			AccountID:      readable(ses.AccountID()),
+			Region:         ses.Region(),
+			ChangeCount:    strconv.Itoa(len(out.Changes)),
+			cfStack:        statStatus,
+			changeset:      out,
 			changesetInput: in,
 		}, nil
 	}
@@ -156,8 +156,7 @@ func (s *statusCommand) model(ctx context.Context, cmd *cobra.Command, args []st
 		return nil, errors.Wrap(err, "unable to list all templates")
 	}
 	statuses := make([][]stackStatus, len(templates))
-	ret := statusCommandModel{
-	}
+	ret := statusCommandModel{}
 	eg, egCtx := errgroup.WithContext(ctx)
 	for tidx, t := range templates {
 		s.Logger.Log(2, "Listing template %s", t)

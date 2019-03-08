@@ -30,12 +30,12 @@ type executeCommand struct {
 }
 
 func (s *executeCommand) Cobra() *cobra.Command {
-	cmd := &cobra.Command {
-		Use:   "execute [template] [params]",
+	cmd := &cobra.Command{
+		Use:       "execute [template] [params]",
 		ValidArgs: s.T.ValidTemplatesAndParams(),
-		Short: "Execute a cloudformation update for a stack",
-		Example: "cfexecute execute infra canary",
-		RunE: s.commandRun,
+		Short:     "Execute a cloudformation update for a stack",
+		Example:   "cfexecute execute infra canary",
+		RunE:      s.commandRun,
 	}
 	cmd.Flags().BoolVarP(&s.autoConfirm, "auto", "a", false, "Will auto confirm the cloudformation change")
 	cmd.Args = validateTemplateParam(s.T)
@@ -70,7 +70,6 @@ func (s *executeCommand) commandRun(cmd *cobra.Command, args []string) error {
 			return nil
 		}
 	}
-
 
 	return s.modelPhase2(ctx, cmd.OutOrStdout(), data)
 }
@@ -109,18 +108,18 @@ func (s *stackEvent) HumanReadable(out io.Writer) error {
 func (s *executeCommand) printStackEvents(ctx context.Context, out io.Writer, in chan *cloudformation.StackEvent) error {
 	for {
 		select {
-		case <- ctx.Done():
+		case <-ctx.Done():
 			return ctx.Err()
-		case event, ok := <- in:
+		case event, ok := <-in:
 			if !ok {
 				return nil
 			}
-			p := &stackEvent {
-				LogicalResourceID: emptyOnNil(event.LogicalResourceId),
-				PhysicalResourceID: emptyOnNil(event.PhysicalResourceId),
-				ResourceStatus: emptyOnNil(event.ResourceStatus),
+			p := &stackEvent{
+				LogicalResourceID:    emptyOnNil(event.LogicalResourceId),
+				PhysicalResourceID:   emptyOnNil(event.PhysicalResourceId),
+				ResourceStatus:       emptyOnNil(event.ResourceStatus),
 				ResourceStatusReason: emptyOnNil(event.ResourceStatusReason),
-				ResourceType: emptyOnNil(event.ResourceType),
+				ResourceType:         emptyOnNil(event.ResourceType),
 			}
 			if err := display(out, s.JSON, p); err != nil {
 				return err
@@ -142,8 +141,7 @@ func (s *executeCommand) modelPhase2(ctx context.Context, out io.Writer, inspect
 	}
 
 	// Now stream the changes
-	streamer := awscache.StackStreamer{
-	}
+	streamer := awscache.StackStreamer{}
 	eg, egCtx := errgroup.WithContext(ctx)
 	streamInto := make(chan *cloudformation.StackEvent)
 	eg.Go(func() error {

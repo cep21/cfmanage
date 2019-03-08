@@ -19,11 +19,11 @@ func (a *StringCache) Do(f func() (string, error)) (string, error) {
 }
 
 type Cache struct {
-	mu sync.Mutex
+	mu  sync.Mutex
 	val interface{}
 }
 
-func (a *Cache) Do(f func() (interface{}, error)) (interface{},error) {
+func (a *Cache) Do(f func() (interface{}, error)) (interface{}, error) {
 	a.mu.Lock()
 	if a.val != nil {
 		a.mu.Unlock()

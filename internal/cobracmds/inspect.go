@@ -25,11 +25,11 @@ type inspectCommand struct {
 }
 
 func (s *inspectCommand) Cobra() *cobra.Command {
-	cmd := &cobra.Command {
-		Use:   "inspect [template] [params]",
+	cmd := &cobra.Command{
+		Use:       "inspect [template] [params]",
 		ValidArgs: s.T.ValidTemplatesAndParams(),
-		Short: "Display status of all cloudformation stacks",
-		Example: "cfexecute inspect infra canary",
+		Short:     "Display status of all cloudformation stacks",
+		Example:   "cfexecute inspect infra canary",
 	}
 	cmd.Args = validateTemplateParam(s.T)
 	cmd.RunE = commonRunCommand(s.ContextFinder, s.model, s.JSON)
@@ -83,9 +83,9 @@ type inspectCommandModel struct {
 	stackStatus
 	Description string
 	LastUpdated time.Time
-	Parameters []param
-	Outputs []param
-	Changes []param
+	Parameters  []param
+	Outputs     []param
+	Changes     []param
 }
 
 func (i *inspectCommandModel) HumanReadable(out io.Writer) error {
@@ -109,7 +109,7 @@ func (i *inspectCommandModel) HumanReadable(out io.Writer) error {
 }
 
 type param struct {
-	Key string
+	Key   string
 	Value string
 }
 
@@ -136,7 +136,7 @@ func populateInspectCommand(ctx context.Context, createTemplate *templatereader.
 		ret.Description = emptyOnNil(stat.cfStack.Description)
 		for _, o := range stat.cfStack.Outputs {
 			ret.Outputs = append(ret.Outputs, param{
-				Key: emptyOnNil(o.OutputKey),
+				Key:   emptyOnNil(o.OutputKey),
 				Value: emptyOnNil(o.OutputValue),
 			})
 		}
@@ -145,14 +145,14 @@ func populateInspectCommand(ctx context.Context, createTemplate *templatereader.
 		ret.Parameters = make([]param, 0, len(stat.changeset.Parameters))
 		for _, p := range stat.changeset.Parameters {
 			ret.Parameters = append(ret.Parameters, param{
-				Key: emptyOnNil(p.ParameterKey),
+				Key:   emptyOnNil(p.ParameterKey),
 				Value: firstNonEmpty(emptyOnNil(p.ResolvedValue), emptyOnNil(p.ParameterValue)),
 			})
 		}
 		ret.Changes = make([]param, 0, len(stat.changeset.Changes))
 		for _, c := range stat.changeset.Changes {
 			ret.Changes = append(ret.Changes, param{
-				Key: firstNonEmpty(emptyOnNil(c.ResourceChange.PhysicalResourceId), emptyOnNil(c.ResourceChange.LogicalResourceId)),
+				Key:   firstNonEmpty(emptyOnNil(c.ResourceChange.PhysicalResourceId), emptyOnNil(c.ResourceChange.LogicalResourceId)),
 				Value: emptyOnNil(c.ResourceChange.Action),
 			})
 		}

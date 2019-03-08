@@ -17,19 +17,19 @@ import (
 )
 
 type cacheKey struct {
-	region string
+	region  string
 	profile string
 }
 
 type AWSCache struct {
-	Cleanup *cleanup.Cleanup
-	mu sync.Mutex
+	Cleanup      *cleanup.Cleanup
+	mu           sync.Mutex
 	sessionCache map[cacheKey]*AWSClients
 }
 
 func (a *AWSCache) Session(profile string, region string) (*AWSClients, error) {
 	itemKey := cacheKey{
-		region: region,
+		region:  region,
 		profile: profile,
 	}
 	a.mu.Lock()
@@ -43,7 +43,7 @@ func (a *AWSCache) Session(profile string, region string) (*AWSClients, error) {
 	}
 	ses, err := session.NewSessionWithOptions(session.Options{
 		Profile: profile,
-		Config: cfg,
+		Config:  cfg,
 	})
 	if err != nil {
 		return nil, err
@@ -51,7 +51,7 @@ func (a *AWSCache) Session(profile string, region string) (*AWSClients, error) {
 	if a.sessionCache == nil {
 		a.sessionCache = make(map[cacheKey]*AWSClients)
 	}
-	a.sessionCache[itemKey] = &AWSClients {
+	a.sessionCache[itemKey] = &AWSClients{
 		session: ses,
 		cleanup: a.Cleanup,
 	}
@@ -63,8 +63,8 @@ type AWSClients struct {
 	cleanup *cleanup.Cleanup
 
 	accountID oncecache.StringCache
-	myToken string
-	mu sync.Mutex
+	myToken   string
+	mu        sync.Mutex
 }
 
 func (a *AWSClients) token() string {
@@ -129,7 +129,7 @@ func guessChangesetType(ctx context.Context, cloudformationClient *cloudformatio
 
 func (a *AWSClients) CreateChangesetWaitForStatus(ctx context.Context, in *cloudformation.CreateChangeSetInput) (*cloudformation.DescribeChangeSetOutput, error) {
 	if in.ChangeSetName == nil {
-		in.ChangeSetName = aws.String("A"+strconv.FormatInt(time.Now().UnixNano(), 16))
+		in.ChangeSetName = aws.String("A" + strconv.FormatInt(time.Now().UnixNano(), 16))
 	}
 	in.ClientToken = aws.String(a.token())
 	cf := cloudformation.New(a.session)
@@ -142,7 +142,7 @@ func (a *AWSClients) CreateChangesetWaitForStatus(ctx context.Context, in *cloud
 		if strings.Contains(err.Error(), "AlreadyExistsException") {
 			_, err := cf.DeleteChangeSetWithContext(ctx, &cloudformation.DeleteChangeSetInput{
 				ChangeSetName: in.ChangeSetName,
-				StackName: in.StackName,
+				StackName:     in.StackName,
 			})
 			if err != nil {
 				return nil, err
@@ -247,7 +247,6 @@ func (t *AWSClients) WaitForTerminalState(ctx context.Context, stackID string, p
 		}
 	}
 }
-
 
 func emptyOnNil(s *string) string {
 	if s == nil {

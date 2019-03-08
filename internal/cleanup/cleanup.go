@@ -10,9 +10,9 @@ type Job func(ctx context.Context) error
 
 type Cleanup struct {
 	CleanupTimeout time.Duration
-	OnErr func(error)
-	mu sync.Mutex
-	cleaners []Job
+	OnErr          func(error)
+	mu             sync.Mutex
+	cleaners       []Job
 }
 
 func (c *Cleanup) Add(f Job) {

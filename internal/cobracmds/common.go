@@ -50,7 +50,7 @@ func readable(s string, err error) string {
 	return s
 }
 
-func firstNonEmpty(s...string) string {
+func firstNonEmpty(s ...string) string {
 	for _, ret := range s {
 		if ret != "" {
 			return ret
@@ -66,7 +66,7 @@ func emptyOnNil(s *string) string {
 	return *s
 }
 
-func validateTemplateParam(T *templatereader.TemplateFinder) func (*cobra.Command, []string) error {
+func validateTemplateParam(T *templatereader.TemplateFinder) func(*cobra.Command, []string) error {
 	return func(_ *cobra.Command, args []string) error {
 		if len(args) != 2 {
 			return errors.New("expect exactly two arguments")

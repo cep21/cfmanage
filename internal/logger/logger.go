@@ -8,8 +8,8 @@ import (
 // Logger helps us verbose log output
 type Logger struct {
 	Verbosity int
-	log          *log.Logger
-	mu           sync.Mutex
+	log       *log.Logger
+	mu        sync.Mutex
 }
 
 // Log will log.Printf the args if verbosity <= this logger's verbosity

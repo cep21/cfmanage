@@ -10,7 +10,7 @@ import (
 
 type TemplateFinder struct {
 	BaseDir string
-	Logger *logger.Logger
+	Logger  *logger.Logger
 }
 
 func (t *TemplateFinder) ValidateTemplate(tmpl string) ([]string, error) {
@@ -87,5 +87,5 @@ func (t *TemplateFinder) ListParameters(template string) ([]string, error) {
 }
 
 func (t *TemplateFinder) ParameterFilename(template string, params string) string {
-	return path.Join(t.BaseDir, template, params + ".json")
+	return path.Join(t.BaseDir, template, params+".json")
 }
