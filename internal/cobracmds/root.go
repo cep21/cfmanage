@@ -4,11 +4,11 @@ import (
 	"io"
 	"time"
 
-	"github.com/cep21/cfexecute2/internal/awscache"
-	"github.com/cep21/cfexecute2/internal/cleanup"
-	"github.com/cep21/cfexecute2/internal/ctxfinder"
-	"github.com/cep21/cfexecute2/internal/logger"
-	"github.com/cep21/cfexecute2/internal/templatereader"
+	"github.com/cep21/cfmanage/internal/awscache"
+	"github.com/cep21/cfmanage/internal/cleanup"
+	"github.com/cep21/cfmanage/internal/ctxfinder"
+	"github.com/cep21/cfmanage/internal/logger"
+	"github.com/cep21/cfmanage/internal/templatereader"
 	"github.com/spf13/cobra"
 )
 
@@ -25,9 +25,9 @@ type RootCommand struct {
 
 func (s *RootCommand) Cobra() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:     "cfexecute2",
+		Use:     "cfmanage",
 		Short:   "Execute and manage a set of cloudformation files",
-		Long:    "cfexecute2 lets you manage a wide set of cloudformation files that represent many stacks at once",
+		Long:    "cfmanage lets you manage a wide set of cloudformation files that represent many stacks at once",
 		Example: "cfexecute",
 		Version: "0.1",
 		PersistentPostRun: func(cmd *cobra.Command, args []string) {

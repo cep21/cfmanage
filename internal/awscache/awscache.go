@@ -11,9 +11,9 @@ import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/cloudformation"
 	"github.com/aws/aws-sdk-go/service/sts"
-	"github.com/cep21/cfexecute2/internal/cleanup"
-	"github.com/cep21/cfexecute2/internal/logger"
-	"github.com/cep21/cfexecute2/internal/oncecache"
+	"github.com/cep21/cfmanage/internal/cleanup"
+	"github.com/cep21/cfmanage/internal/logger"
+	"github.com/cep21/cfmanage/internal/oncecache"
 	"github.com/pkg/errors"
 )
 

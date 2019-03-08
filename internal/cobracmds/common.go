@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/cep21/cfexecute2/internal/ctxfinder"
-	"github.com/cep21/cfexecute2/internal/templatereader"
+	"github.com/cep21/cfmanage/internal/ctxfinder"
+	"github.com/cep21/cfmanage/internal/templatereader"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 )

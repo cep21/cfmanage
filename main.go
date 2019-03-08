@@ -5,12 +5,12 @@ import (
 	"io"
 	"os"
 
-	"github.com/cep21/cfexecute2/internal/awscache"
-	"github.com/cep21/cfexecute2/internal/cleanup"
-	"github.com/cep21/cfexecute2/internal/cobracmds"
-	"github.com/cep21/cfexecute2/internal/ctxfinder"
-	"github.com/cep21/cfexecute2/internal/logger"
-	"github.com/cep21/cfexecute2/internal/templatereader"
+	"github.com/cep21/cfmanage/internal/awscache"
+	"github.com/cep21/cfmanage/internal/cleanup"
+	"github.com/cep21/cfmanage/internal/cobracmds"
+	"github.com/cep21/cfmanage/internal/ctxfinder"
+	"github.com/cep21/cfmanage/internal/logger"
+	"github.com/cep21/cfmanage/internal/templatereader"
 )
 
 var App = Application{ //nolint

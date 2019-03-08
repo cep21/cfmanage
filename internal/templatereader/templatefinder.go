@@ -6,7 +6,7 @@ import (
 	"path"
 	"strings"
 
-	"github.com/cep21/cfexecute2/internal/logger"
+	"github.com/cep21/cfmanage/internal/logger"
 )
 
 type TemplateFinder struct {

@@ -1,4 +1,4 @@
-module github.com/cep21/cfexecute2
+module github.com/cep21/cfmanage
 
 require (
 	github.com/aws/aws-sdk-go v1.17.14
