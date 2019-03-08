@@ -2,7 +2,6 @@ package cobracmds
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"github.com/cep21/cfexecute2/internal/awscache"
 	"github.com/cep21/cfexecute2/internal/cleanup"
@@ -10,7 +9,6 @@ import (
 	"github.com/cep21/cfexecute2/internal/logger"
 	"github.com/cep21/cfexecute2/internal/templatereader"
 	"github.com/olekukonko/tablewriter"
-	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 	"io"
 	"time"
@@ -32,20 +30,9 @@ func (s *inspectCommand) Cobra() *cobra.Command {
 		ValidArgs: s.T.ValidTemplatesAndParams(),
 		Short: "Display status of all cloudformation stacks",
 		Example: "cfexecute inspect infra canary",
-		RunE: s.commandRun,
-		Args: func(cmd *cobra.Command, args []string) error {
-			if len(args) != 2 {
-				return errors.New("expect exactly two arguments")
-			}
-			if err := validateTemplate(s.T, args[0]); err != nil {
-				return err
-			}
-			if err := validateParams(s.T, args[0], args[1]); err != nil {
-				return err
-			}
-			return nil
-		},
 	}
+	cmd.Args = validateTemplateParam(s.T)
+	cmd.RunE = commonRunCommand(s.ContextFinder, s.model, s.JSON)
 	return cmd
 }
 
@@ -71,42 +58,6 @@ func validateParams(T *templatereader.TemplateFinder, t string, p string) error 
 		fmt.Println("  ", ts)
 	}
 	return err
-}
-
-func (s *inspectCommand) commandRun(cmd *cobra.Command, args []string) error {
-	template := args[0]
-	params := args[1]
-	if err := validateTemplate(s.T, template); err != nil {
-		return err
-	}
-	if err := validateParams(s.T, template, params); err != nil {
-		return err
-	}
-	ctx := s.ContextFinder.Ctx()
-	data, err := s.model(ctx, template, params)
-	if err != nil {
-		return errors.Wrap(err, "unable to load data for templates")
-	}
-	if *s.JSON == true {
-		return json.NewEncoder(cmd.OutOrStdout()).Encode(data)
-	}
-	if _, err := fmt.Fprintf(cmd.OutOrStdout(), "Stack summary\n"); err != nil {
-		return err
-	}
-	printStatus(cmd.OutOrStdout(), []stackStatus{data.stackStatus})
-
-	if err := printParams(cmd.OutOrStdout(), "Parameters", data.Parameters); err != nil {
-		return err
-	}
-
-	if err := printParams(cmd.OutOrStdout(), "Outputs", data.Outputs); err != nil {
-		return err
-	}
-
-	if err := printParams(cmd.OutOrStdout(), "Changes", data.Changes); err != nil {
-		return err
-	}
-	return nil
 }
 
 func printParams(out io.Writer, title string, params []param) error {
@@ -137,13 +88,39 @@ type inspectCommandModel struct {
 	Changes []param
 }
 
+func (i *inspectCommandModel) HumanReadable(out io.Writer) error {
+	if _, err := fmt.Fprintf(out, "Stack summary\n"); err != nil {
+		return err
+	}
+	printStatus(out, []stackStatus{i.stackStatus})
+
+	if err := printParams(out, "Parameters", i.Parameters); err != nil {
+		return err
+	}
+
+	if err := printParams(out, "Outputs", i.Outputs); err != nil {
+		return err
+	}
+
+	if err := printParams(out, "Changes", i.Changes); err != nil {
+		return err
+	}
+	return nil
+}
+
 type param struct {
 	Key string
 	Value string
 }
 
-func (s *inspectCommand) model(ctx context.Context, template string, params string) (*inspectCommandModel, error) {
-	stat, err := populateStatusCommand(ctx, s.Ctx, s.Logger, s.AWSCache, s.T, template, params)
+func (s *inspectCommand) model(ctx context.Context, cmd *cobra.Command, args []string) (HumanPrintable, error) {
+	template := args[0]
+	params := args[1]
+	return populateInspectCommand(ctx, s.Ctx, s.Logger, s.AWSCache, s.T, template, params)
+}
+
+func populateInspectCommand(ctx context.Context, createTemplate *templatereader.CreateChangeSetTemplate, log *logger.Logger, awsCache *awscache.AWSCache, T *templatereader.TemplateFinder, template string, params string) (*inspectCommandModel, error) {
+	stat, err := populateStatusCommand(ctx, createTemplate, log, awsCache, T, template, params)
 	if err != nil {
 		return nil, err
 	}
@@ -181,20 +158,4 @@ func (s *inspectCommand) model(ctx context.Context, template string, params stri
 		}
 	}
 	return ret, nil
-}
-
-func firstNonEmpty(s...string) string {
-	for _, ret := range s {
-		if ret != "" {
-			return ret
-		}
-	}
-	return ""
-}
-
-func emptyOnNil(s *string) string {
-	if s == nil {
-		return ""
-	}
-	return *s
 }

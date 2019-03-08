@@ -2,7 +2,6 @@ package cobracmds
 
 import (
 	"context"
-	"encoding/json"
 	"github.com/aws/aws-sdk-go/service/cloudformation"
 	"github.com/cep21/cfexecute2/internal/awscache"
 	"github.com/cep21/cfexecute2/internal/cleanup"
@@ -15,7 +14,6 @@ import (
 	"golang.org/x/sync/errgroup"
 	"io"
 	"strconv"
-	"time"
 )
 
 type statusCommand struct {
@@ -33,24 +31,11 @@ func (s *statusCommand) Cobra() *cobra.Command {
 		Use:   "status",
 		Short: "Display status of all cloudformation stacks",
 		Example: "cfexecute status",
-		RunE: s.statusCommandRun,
 		ValidArgs: []string{},
 		Args: cobra.NoArgs,
 	}
+	cmd.RunE = commonRunCommand(s.ContextFinder, s.model, s.JSON)
 	return cmd
-}
-
-func (s *statusCommand) statusCommandRun(cmd *cobra.Command, args []string) error {
-	ctx := s.ContextFinder.Ctx()
-	data, err := s.model(ctx)
-	if err != nil {
-		return errors.Wrap(err, "unable to load data for templates")
-	}
-	if *s.JSON == true {
-		return json.NewEncoder(cmd.OutOrStdout()).Encode(data)
-	}
-	printStatus(cmd.OutOrStdout(), data.Statuses)
-	return nil
 }
 
 func printStatus(out io.Writer, statuses[]stackStatus) {
@@ -68,6 +53,18 @@ type statusCommandModel struct {
 	Statuses []stackStatus
 }
 
+func (s *statusCommandModel) HumanReadable(out io.Writer) error {
+	table := tablewriter.NewWriter(out)
+	table.SetHeader([]string{"Template", "File name", "Stack Name", "Status", "Account ID", "Region", "Pending Changes", "Description", "Last Updated"})
+	for _, st := range s.Statuses {
+		table.Append([]string{
+			st.Template, st.StackFileName, st.StackName, st.StackStatus, st.AccountID, st.Region, st.ChangeCount, st.Description, st.LastUpdated,
+		})
+	}
+	table.Render()
+	return nil
+}
+
 type stackStatus struct {
 	Template      string
 	StackFileName string
@@ -81,6 +78,7 @@ type stackStatus struct {
 
 	cfStack *cloudformation.Stack
 	changeset *cloudformation.DescribeChangeSetOutput
+	changesetInput *templatereader.ChangesetInput
 }
 
 func (s stackStatus) goodStatus() bool {
@@ -115,6 +113,7 @@ func populateStatusCommand(ctx context.Context, createTemplate *templatereader.C
 			AccountID: readable(ses.AccountID()),
 			Region: ses.Region(),
 			cfStack: statStatus,
+			changesetInput: in,
 		}, nil
 	}
 	if statStatus == nil {
@@ -126,6 +125,7 @@ func populateStatusCommand(ctx context.Context, createTemplate *templatereader.C
 			AccountID: readable(ses.AccountID()),
 			Region: ses.Region(),
 			cfStack: statStatus,
+			changesetInput: in,
 		}, nil
 	} else {
 		out, err := ses.CreateChangesetWaitForStatus(ctx, &in.CreateChangeSetInput)
@@ -144,18 +144,12 @@ func populateStatusCommand(ctx context.Context, createTemplate *templatereader.C
 			ChangeCount: strconv.Itoa(len(out.Changes)),
 			cfStack: statStatus,
 			changeset: out,
+			changesetInput: in,
 		}, nil
 	}
 }
 
-func emptyOnNilTime(t *time.Time) string {
-	if t == nil {
-		return ""
-	}
-	return t.String()
-}
-
-func (s *statusCommand) model(ctx context.Context) (*statusCommandModel, error) {
+func (s *statusCommand) model(ctx context.Context, cmd *cobra.Command, args []string) (HumanPrintable, error) {
 	s.Logger.Log(2, "Running status command")
 	templates, err := s.T.ListTemplates()
 	if err != nil {
@@ -196,11 +190,4 @@ func (s *statusCommand) model(ctx context.Context) (*statusCommandModel, error) 
 		}
 	}
 	return &ret, nil
-}
-
-func readable(s string, err error) string {
-	if err != nil {
-		return err.Error()[:10]
-	}
-	return s
 }

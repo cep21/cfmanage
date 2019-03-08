@@ -63,7 +63,17 @@ type AWSClients struct {
 	cleanup *cleanup.Cleanup
 
 	accountID oncecache.StringCache
+	myToken string
 	mu sync.Mutex
+}
+
+func (a *AWSClients) token() string {
+	a.mu.Lock()
+	defer a.mu.Unlock()
+	if a.myToken == "" {
+		a.myToken = strconv.FormatInt(time.Now().UnixNano(), 16)
+	}
+	return a.myToken
 }
 
 func (a *AWSClients) Region() string {
@@ -121,6 +131,7 @@ func (a *AWSClients) CreateChangesetWaitForStatus(ctx context.Context, in *cloud
 	if in.ChangeSetName == nil {
 		in.ChangeSetName = aws.String("A"+strconv.FormatInt(time.Now().UnixNano(), 16))
 	}
+	in.ClientToken = aws.String(a.token())
 	cf := cloudformation.New(a.session)
 	in, err := guessChangesetType(ctx, cf, in)
 	if err != nil {
@@ -154,6 +165,15 @@ func (a *AWSClients) CreateChangesetWaitForStatus(ctx context.Context, in *cloud
 	return a.waitForChangesetToFinishCreating(ctx, time.Second, cf, *res.Id, nil, nil)
 }
 
+func (a *AWSClients) ExecuteChangeset(ctx context.Context, changesetARN string) error {
+	cf := cloudformation.New(a.session)
+	_, err := cf.ExecuteChangeSetWithContext(ctx, &cloudformation.ExecuteChangeSetInput{
+		ChangeSetName:      &changesetARN,
+		ClientRequestToken: aws.String(a.token()),
+	})
+	return err
+}
+
 func (a *AWSClients) waitForChangesetToFinishCreating(ctx context.Context, pollInterval time.Duration, cloudformationClient *cloudformation.CloudFormation, changesetARN string, logger *logger.Logger, cleanShutdown <-chan struct{}) (*cloudformation.DescribeChangeSetOutput, error) {
 	lastChangesetStatus := ""
 	for {
@@ -180,6 +200,54 @@ func (a *AWSClients) waitForChangesetToFinishCreating(ctx context.Context, pollI
 		}
 	}
 }
+
+// waitForTerminalState loops forever until either the context ends, or something fails
+func (t *AWSClients) WaitForTerminalState(ctx context.Context, stackID string, pollInterval time.Duration, log *logger.Logger) error {
+	lastStackStatus := ""
+	cfClient := cloudformation.New(t.session)
+	for {
+		select {
+		case <-ctx.Done():
+			return ctx.Err()
+		case <-time.After(pollInterval):
+		}
+		descOut, err := cfClient.DescribeStacksWithContext(ctx, &cloudformation.DescribeStacksInput{
+			StackName: &stackID,
+		})
+		if err != nil {
+			return err
+		}
+		if len(descOut.Stacks) != 1 {
+			return errors.Errorf("unable to correctly find stack %s", stackID)
+		}
+		thisStack := descOut.Stacks[0]
+		if *thisStack.StackStatus != lastStackStatus {
+			log.Log(1, "Stack status set to %s: %s", *thisStack.StackStatus, emptyOnNil(thisStack.StackStatusReason))
+			lastStackStatus = *thisStack.StackStatus
+		}
+		// https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-describing-stacks.html
+		terminalFailureStatusStates := map[string]struct{}{
+			"CREATE_FAILED":            {},
+			"DELETE_FAILED":            {},
+			"ROLLBACK_FAILED":          {},
+			"ROLLBACK_COMPLETE":        {},
+			"UPDATE_ROLLBACK_COMPLETE": {},
+			"UPDATE_ROLLBACK_FAILED":   {},
+		}
+		if _, exists := terminalFailureStatusStates[emptyOnNil(thisStack.StackStatus)]; exists {
+			return errors.Errorf("Terminal stack state failure: %s %s", emptyOnNil(thisStack.StackStatus), emptyOnNil(thisStack.StackStatusReason))
+		}
+		terminalOkStatusStates := map[string]struct{}{
+			"CREATE_COMPLETE": {},
+			"DELETE_COMPLETE": {},
+			"UPDATE_COMPLETE": {},
+		}
+		if _, exists := terminalOkStatusStates[emptyOnNil(thisStack.StackStatus)]; exists {
+			return nil
+		}
+	}
+}
+
 
 func emptyOnNil(s *string) string {
 	if s == nil {

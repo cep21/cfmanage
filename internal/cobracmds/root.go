@@ -66,5 +66,16 @@ func (s *RootCommand) Cobra() *cobra.Command {
 		Cleanup: s.Cleanup,
 	}
 	cmd.AddCommand(inspectCmd.Cobra())
+
+	executeCommand := &executeCommand {
+		AWSCache: s.AWSCache,
+		T: s.T,
+		Ctx: s.Ctx,
+		Logger: s.Logger,
+		JSON: &s.JSONFormat,
+		ContextFinder: s.ContextFinder,
+		Cleanup: s.Cleanup,
+	}
+	cmd.AddCommand(executeCommand.Cobra())
 	return cmd
 }
