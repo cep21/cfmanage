@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"os/signal"
+	"syscall"
 	"time"
 
 	"github.com/aws/aws-sdk-go/service/cloudformation"
@@ -57,7 +59,7 @@ func (s *executeCommand) commandRun(cmd *cobra.Command, args []string) error {
 	if err != nil {
 		return errors.Wrap(err, "unable to load data for templates")
 	}
-	if data.StackStatus != "CREATE_COMPLETE" && data.StackStatus != "UPDATE_COMPLETE" {
+	if data.StackStatus != "CREATE_COMPLETE" && data.StackStatus != "UPDATE_COMPLETE" && data.StackStatus != "UPDATE_ROLLBACK_COMPLETE" {
 		return fmt.Errorf("unable to create stack.  Status: %s", data.StackStatus)
 	}
 	if err := display(cmd.OutOrStdout(), s.JSON, data); err != nil {
@@ -151,6 +153,29 @@ func (s *executeCommand) modelPhase2(ctx context.Context, out io.Writer, inspect
 	})
 	eg.Go(func() error {
 		return s.printStackEvents(egCtx, out, streamInto)
+	})
+	eg.Go(func() error {
+		catchSignals := []os.Signal{
+			os.Interrupt, syscall.SIGTERM,
+		}
+		sigChan := make(chan os.Signal, len(catchSignals))
+		defer close(sigChan)
+		signal.Notify(sigChan, catchSignals...)
+		defer signal.Stop(sigChan)
+		select {
+		case <-sigChan:
+			p := &stackEvent{
+				ResourceType: "Program Signal caught",
+			}
+			if err := display(out, s.JSON, p); err != nil {
+				return err
+			}
+			if err := ses.CancelStackUpdate(egCtx, *inspectModel.changeset.StackName); err != nil {
+				return err
+			}
+		case <-egCtx.Done():
+		}
+		return nil
 	})
 	eg.Go(func() error {
 		actualErr := ses.WaitForTerminalState(egCtx, *inspectModel.changeset.StackId, time.Second, s.Logger)
