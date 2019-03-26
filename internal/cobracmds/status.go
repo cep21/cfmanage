@@ -6,6 +6,8 @@ import (
 	"io"
 	"strconv"
 
+	"github.com/aws/aws-sdk-go/aws"
+
 	"github.com/aws/aws-sdk-go/service/cloudformation"
 	"github.com/cep21/cfmanage/internal/awscache"
 	"github.com/cep21/cfmanage/internal/cleanup"
@@ -118,19 +120,12 @@ func populateStatusCommand(ctx context.Context, createTemplate *templatereader.C
 			changesetInput: in,
 		}, nil
 	}
+	out, err := ses.CreateChangesetWaitForStatus(ctx, &in.CreateChangeSetInput, statStatus)
 	if statStatus == nil {
-		return stackStatus{
-			Template:       t,
-			StackFileName:  fname,
-			StackName:      p,
-			StackStatus:    "--DOES NOT EXIST--",
-			AccountID:      readable(ses.AccountID()),
-			Region:         ses.Region(),
-			cfStack:        statStatus,
-			changesetInput: in,
-		}, nil
+		statStatus = &cloudformation.Stack{
+			StackStatus: aws.String("--DOES NOT EXIST--"),
+		}
 	}
-	out, err := ses.CreateChangesetWaitForStatus(ctx, &in.CreateChangeSetInput)
 	if err != nil {
 		return stackStatus{
 			Description:     emptyOnNil(statStatus.Description),
@@ -147,7 +142,7 @@ func populateStatusCommand(ctx context.Context, createTemplate *templatereader.C
 		}, nil
 	}
 	return stackStatus{
-		Description:     emptyOnNil(statStatus.Description),
+		Description:     emptyOnNil(out.Description),
 		LastUpdated:     emptyOnNilTime(statStatus.LastUpdatedTime),
 		Template:        t,
 		StackFileName:   fname,
