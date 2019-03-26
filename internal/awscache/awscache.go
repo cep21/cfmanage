@@ -238,6 +238,8 @@ func (a *AWSClients) WaitForTerminalState(ctx context.Context, stackID string, p
 			"DELETE_FAILED":          {},
 			"ROLLBACK_FAILED":        {},
 			"UPDATE_ROLLBACK_FAILED": {},
+			"ROLLBACK_COMPLETE":        {},
+			"UPDATE_ROLLBACK_COMPLETE": {},
 		}
 		if _, exists := terminalFailureStatusStates[emptyOnNil(thisStack.StackStatus)]; exists {
 			return errors.Errorf("Terminal stack state failure: %s %s", emptyOnNil(thisStack.StackStatus), emptyOnNil(thisStack.StackStatusReason))
@@ -246,8 +248,6 @@ func (a *AWSClients) WaitForTerminalState(ctx context.Context, stackID string, p
 			"CREATE_COMPLETE":          {},
 			"DELETE_COMPLETE":          {},
 			"UPDATE_COMPLETE":          {},
-			"ROLLBACK_COMPLETE":        {},
-			"UPDATE_ROLLBACK_COMPLETE": {},
 		}
 		if _, exists := terminalOkStatusStates[emptyOnNil(thisStack.StackStatus)]; exists {
 			return nil
