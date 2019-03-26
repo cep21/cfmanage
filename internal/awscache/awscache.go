@@ -128,7 +128,7 @@ func guessChangesetType(ctx context.Context, cloudformationClient *cloudformatio
 	return in
 }
 
-func (a *AWSClients) CreateChangesetWaitForStatus(ctx context.Context, in *cloudformation.CreateChangeSetInput) (*cloudformation.DescribeChangeSetOutput, error) {
+func (a *AWSClients) CreateChangesetWaitForStatus(ctx context.Context, in *cloudformation.CreateChangeSetInput, existingStack *cloudformation.Stack) (*cloudformation.DescribeChangeSetOutput, error) {
 	if in.ChangeSetName == nil {
 		in.ChangeSetName = aws.String("A" + strconv.FormatInt(time.Now().UnixNano(), 16))
 	}
@@ -160,6 +160,23 @@ func (a *AWSClients) CreateChangesetWaitForStatus(ctx context.Context, in *cloud
 		})
 		return err
 	})
+	if existingStack == nil {
+		// Clean up the stack created by the changeset
+		a.cleanup.Add(func(ctx context.Context) error {
+			finishingStack, err := a.DescribeStack(ctx, *in.StackName)
+			if err != nil {
+				return err
+			}
+			if *finishingStack.StackStatus == "REVIEW_IN_PROGRESS" {
+				_, err := cf.DeleteStack(&cloudformation.DeleteStackInput{
+					ClientRequestToken: aws.String(a.token()),
+					StackName:          in.StackName,
+				})
+				return err
+			}
+			return nil
+		})
+	}
 	return a.waitForChangesetToFinishCreating(ctx, time.Second, cf, *res.Id, nil, nil)
 }
 
@@ -234,10 +251,10 @@ func (a *AWSClients) WaitForTerminalState(ctx context.Context, stackID string, p
 		}
 		// https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-describing-stacks.html
 		terminalFailureStatusStates := map[string]struct{}{
-			"CREATE_FAILED":          {},
-			"DELETE_FAILED":          {},
-			"ROLLBACK_FAILED":        {},
-			"UPDATE_ROLLBACK_FAILED": {},
+			"CREATE_FAILED":            {},
+			"DELETE_FAILED":            {},
+			"ROLLBACK_FAILED":          {},
+			"UPDATE_ROLLBACK_FAILED":   {},
 			"ROLLBACK_COMPLETE":        {},
 			"UPDATE_ROLLBACK_COMPLETE": {},
 		}
@@ -245,9 +262,9 @@ func (a *AWSClients) WaitForTerminalState(ctx context.Context, stackID string, p
 			return errors.Errorf("Terminal stack state failure: %s %s", emptyOnNil(thisStack.StackStatus), emptyOnNil(thisStack.StackStatusReason))
 		}
 		terminalOkStatusStates := map[string]struct{}{
-			"CREATE_COMPLETE":          {},
-			"DELETE_COMPLETE":          {},
-			"UPDATE_COMPLETE":          {},
+			"CREATE_COMPLETE": {},
+			"DELETE_COMPLETE": {},
+			"UPDATE_COMPLETE": {},
 		}
 		if _, exists := terminalOkStatusStates[emptyOnNil(thisStack.StackStatus)]; exists {
 			return nil

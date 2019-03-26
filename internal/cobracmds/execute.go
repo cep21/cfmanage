@@ -59,7 +59,7 @@ func (s *executeCommand) commandRun(cmd *cobra.Command, args []string) error {
 	if err != nil {
 		return errors.Wrap(err, "unable to load data for templates")
 	}
-	if data.StackStatus != "CREATE_COMPLETE" && data.StackStatus != "UPDATE_COMPLETE" && data.StackStatus != "UPDATE_ROLLBACK_COMPLETE" {
+	if data.StackStatus != "CREATE_COMPLETE" && data.StackStatus != "UPDATE_COMPLETE" && data.StackStatus != "UPDATE_ROLLBACK_COMPLETE" && data.StackStatus != "--DOES NOT EXIST--" {
 		return fmt.Errorf("unable to create stack.  Status: %s", data.StackStatus)
 	}
 	if err := display(cmd.OutOrStdout(), s.JSON, data); err != nil {
