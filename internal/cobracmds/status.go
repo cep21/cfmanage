@@ -2,6 +2,7 @@ package cobracmds
 
 import (
 	"context"
+	"fmt"
 	"io"
 	"strconv"
 
@@ -41,11 +42,9 @@ func (s *statusCommand) Cobra() *cobra.Command {
 
 func printStatus(out io.Writer, statuses []stackStatus) {
 	table := tablewriter.NewWriter(out)
-	table.SetHeader([]string{"Template", "File name", "Stack Name", "Status", "Account ID", "Region", "Pending Changes", "Description", "Last Updated"})
+	setStatusColumns(table)
 	for _, st := range statuses {
-		table.Append([]string{
-			st.Template, st.StackFileName, st.StackName, st.StackStatus, st.AccountID, st.Region, st.ChangeCount, st.Description, st.LastUpdated,
-		})
+		st.appendToTable(table)
 	}
 	table.Render()
 }
@@ -56,30 +55,39 @@ type statusCommandModel struct {
 
 func (s *statusCommandModel) HumanReadable(out io.Writer) error {
 	table := tablewriter.NewWriter(out)
-	table.SetHeader([]string{"Template", "File name", "Stack Name", "Status", "Account ID", "Region", "Pending Changes", "Description", "Last Updated"})
+	setStatusColumns(table)
 	for _, st := range s.Statuses {
-		table.Append([]string{
-			st.Template, st.StackFileName, st.StackName, st.StackStatus, st.AccountID, st.Region, st.ChangeCount, st.Description, st.LastUpdated,
-		})
+		st.appendToTable(table)
 	}
 	table.Render()
 	return nil
 }
 
 type stackStatus struct {
-	Template      string
-	StackFileName string
-	StackName     string
-	StackStatus   string
-	AccountID     string
-	Region        string
-	ChangeCount   string
-	Description   string
-	LastUpdated   string
+	Template        string
+	StackFileName   string
+	StackName       string
+	StackStatus     string
+	AccountID       string
+	Region          string
+	ChangeCount     string
+	Description     string
+	LastUpdated     string
+	ChangesetStatus string
 
 	cfStack        *cloudformation.Stack
 	changeset      *cloudformation.DescribeChangeSetOutput
 	changesetInput *templatereader.ChangesetInput
+}
+
+func setStatusColumns(t *tablewriter.Table) {
+	t.SetHeader([]string{"Template", "File name", "Stack Name", "Status", "Account ID", "Region", "Pending Changes", "Description", "Changeset status", "Last Updated"})
+}
+
+func (st *stackStatus) appendToTable(t *tablewriter.Table) {
+	t.Append([]string{
+		st.Template, st.StackFileName, st.StackName, st.StackStatus, st.AccountID, st.Region, st.ChangeCount, st.Description, st.ChangesetStatus, st.LastUpdated,
+	})
 }
 
 func populateStatusCommand(ctx context.Context, createTemplate *templatereader.CreateChangeSetTemplate, log *logger.Logger, awsCache *awscache.AWSCache, tfinder *templatereader.TemplateFinder, t string, p string) (stackStatus, error) {
@@ -124,21 +132,34 @@ func populateStatusCommand(ctx context.Context, createTemplate *templatereader.C
 	}
 	out, err := ses.CreateChangesetWaitForStatus(ctx, &in.CreateChangeSetInput)
 	if err != nil {
-		return stackStatus{}, err
+		return stackStatus{
+			Description:     emptyOnNil(statStatus.Description),
+			LastUpdated:     emptyOnNilTime(statStatus.LastUpdatedTime),
+			Template:        t,
+			StackFileName:   fname,
+			StackName:       *in.StackName,
+			StackStatus:     *statStatus.StackStatus,
+			AccountID:       readable(ses.AccountID()),
+			Region:          ses.Region(),
+			ChangesetStatus: fmt.Sprintf("Unable to apply: %s", err.Error()),
+			cfStack:         statStatus,
+			changesetInput:  in,
+		}, nil
 	}
 	return stackStatus{
-		Description:    emptyOnNil(statStatus.Description),
-		LastUpdated:    emptyOnNilTime(statStatus.LastUpdatedTime),
-		Template:       t,
-		StackFileName:  fname,
-		StackName:      *in.StackName,
-		StackStatus:    *statStatus.StackStatus,
-		AccountID:      readable(ses.AccountID()),
-		Region:         ses.Region(),
-		ChangeCount:    strconv.Itoa(len(out.Changes)),
-		cfStack:        statStatus,
-		changeset:      out,
-		changesetInput: in,
+		Description:     emptyOnNil(statStatus.Description),
+		LastUpdated:     emptyOnNilTime(statStatus.LastUpdatedTime),
+		Template:        t,
+		StackFileName:   fname,
+		StackName:       *in.StackName,
+		StackStatus:     *statStatus.StackStatus,
+		AccountID:       readable(ses.AccountID()),
+		Region:          ses.Region(),
+		ChangesetStatus: "Ready to apply",
+		ChangeCount:     strconv.Itoa(len(out.Changes)),
+		cfStack:         statStatus,
+		changeset:       out,
+		changesetInput:  in,
 	}, nil
 }
 
@@ -166,7 +187,7 @@ func (s *statusCommand) model(ctx context.Context, cmd *cobra.Command, args []st
 			eg.Go(func() error {
 				stat, err := populateStatusCommand(egCtx, s.Ctx, s.Logger, s.AWSCache, s.T, t, p)
 				if err != nil {
-					return err
+					return errors.Wrapf(err, "unable to populate %s", p)
 				}
 				statuses[tidx][idx] = stat
 				return nil

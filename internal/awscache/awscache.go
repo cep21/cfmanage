@@ -172,6 +172,15 @@ func (a *AWSClients) ExecuteChangeset(ctx context.Context, changesetARN string) 
 	return err
 }
 
+func (a *AWSClients) CancelStackUpdate(ctx context.Context, stackName string) error {
+	cf := cloudformation.New(a.session)
+	_, err := cf.CancelUpdateStackWithContext(ctx, &cloudformation.CancelUpdateStackInput{
+		// Note: Stack cancels should *not* use the same client request token as the create request
+		StackName: &stackName,
+	})
+	return err
+}
+
 func (a *AWSClients) waitForChangesetToFinishCreating(ctx context.Context, pollInterval time.Duration, cloudformationClient *cloudformation.CloudFormation, changesetARN string, logger *logger.Logger, cleanShutdown <-chan struct{}) (*cloudformation.DescribeChangeSetOutput, error) {
 	lastChangesetStatus := ""
 	for {
@@ -225,20 +234,20 @@ func (a *AWSClients) WaitForTerminalState(ctx context.Context, stackID string, p
 		}
 		// https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-describing-stacks.html
 		terminalFailureStatusStates := map[string]struct{}{
-			"CREATE_FAILED":            {},
-			"DELETE_FAILED":            {},
-			"ROLLBACK_FAILED":          {},
-			"ROLLBACK_COMPLETE":        {},
-			"UPDATE_ROLLBACK_COMPLETE": {},
-			"UPDATE_ROLLBACK_FAILED":   {},
+			"CREATE_FAILED":          {},
+			"DELETE_FAILED":          {},
+			"ROLLBACK_FAILED":        {},
+			"UPDATE_ROLLBACK_FAILED": {},
 		}
 		if _, exists := terminalFailureStatusStates[emptyOnNil(thisStack.StackStatus)]; exists {
 			return errors.Errorf("Terminal stack state failure: %s %s", emptyOnNil(thisStack.StackStatus), emptyOnNil(thisStack.StackStatusReason))
 		}
 		terminalOkStatusStates := map[string]struct{}{
-			"CREATE_COMPLETE": {},
-			"DELETE_COMPLETE": {},
-			"UPDATE_COMPLETE": {},
+			"CREATE_COMPLETE":          {},
+			"DELETE_COMPLETE":          {},
+			"UPDATE_COMPLETE":          {},
+			"ROLLBACK_COMPLETE":        {},
+			"UPDATE_ROLLBACK_COMPLETE": {},
 		}
 		if _, exists := terminalOkStatusStates[emptyOnNil(thisStack.StackStatus)]; exists {
 			return nil
