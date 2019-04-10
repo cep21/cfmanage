@@ -12,6 +12,7 @@ fix:
 
 # Lint the code
 lint:
+	go mod verify
 	golangci-lint run
 
 # ci installs dep by direct version.  Users install with 'go get'
