@@ -4,6 +4,8 @@ import (
 	"io"
 	"time"
 
+	"github.com/google/go-github/v25/github"
+
 	"github.com/cep21/cfmanage/internal/awscache"
 	"github.com/cep21/cfmanage/internal/cleanup"
 	"github.com/cep21/cfmanage/internal/ctxfinder"
@@ -23,13 +25,15 @@ type RootCommand struct {
 	ContextFinder *ctxfinder.ContextFinder
 }
 
+const currentVersion = "1.1.0"
+
 func (s *RootCommand) Cobra() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "cfmanage",
 		Short:   "Execute and manage a set of cloudformation files",
 		Long:    "cfmanage lets you manage a wide set of cloudformation files that represent many stacks at once",
 		Example: "cfexecute",
-		Version: "0.1",
+		Version: currentVersion,
 		PersistentPostRun: func(cmd *cobra.Command, args []string) {
 			s.Cleanup.Clean()
 		},
@@ -75,5 +79,13 @@ func (s *RootCommand) Cobra() *cobra.Command {
 		Cleanup:       s.Cleanup,
 	}
 	cmd.AddCommand(executeCommand.Cobra())
+
+	versionCommand := &versionCommand{
+		Logger:        s.Logger,
+		JSON:          &s.JSONFormat,
+		ContextFinder: s.ContextFinder,
+		GithubClient:  github.NewClient(nil),
+	}
+	cmd.AddCommand(versionCommand.Cobra())
 	return cmd
 }
