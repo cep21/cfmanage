@@ -76,6 +76,7 @@ type stackStatus struct {
 	Description     string
 	LastUpdated     string
 	ChangesetStatus string
+	ChangesetError  error
 
 	cfStack        *cloudformation.Stack
 	changeset      *cloudformation.DescribeChangeSetOutput
@@ -92,6 +93,7 @@ func (st *stackStatus) appendToTable(t *tablewriter.Table) {
 	})
 }
 
+// This function should try very hard to not return error: it's used by status which is executed on all stacks.
 func populateStatusCommand(ctx context.Context, createTemplate *templatereader.CreateChangeSetTemplate, log *logger.Logger, awsCache *awscache.AWSCache, tfinder *templatereader.TemplateFinder, t string, p string) (stackStatus, error) {
 	log.Log(2, "Listing params %s", p)
 	fname := tfinder.ParameterFilename(t, p)
@@ -136,11 +138,13 @@ func populateStatusCommand(ctx context.Context, createTemplate *templatereader.C
 			StackStatus:     *statStatus.StackStatus,
 			AccountID:       readable(ses.AccountID()),
 			Region:          ses.Region(),
+			ChangesetError:  err,
 			ChangesetStatus: fmt.Sprintf("Unable to apply: %s", err.Error()),
 			cfStack:         statStatus,
 			changesetInput:  in,
 		}, nil
 	}
+
 	return stackStatus{
 		Description:     emptyOnNil(out.Description),
 		LastUpdated:     emptyOnNilTime(statStatus.LastUpdatedTime),
