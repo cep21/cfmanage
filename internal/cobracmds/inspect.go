@@ -29,7 +29,7 @@ func (s *inspectCommand) Cobra() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:       "inspect [template] [params]",
 		ValidArgs: s.T.ValidTemplatesAndParams(),
-		Short:     "Display status of all cloudformation stacks",
+		Short:     "Display status of a single cloudformation stack",
 		Example:   "cfexecute inspect infra canary",
 	}
 	cmd.Args = validateTemplateParam(s.T)
