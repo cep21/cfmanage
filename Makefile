@@ -1,5 +1,6 @@
 build:
 	go build ./...
+	go build .
 
 # Run unit tests
 test:
