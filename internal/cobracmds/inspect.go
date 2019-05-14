@@ -125,6 +125,9 @@ func populateInspectCommand(ctx context.Context, createTemplate *templatereader.
 	if err != nil {
 		return nil, err
 	}
+	if stat.ChangesetError != nil {
+		return nil, stat.ChangesetError
+	}
 	ret := &inspectCommandModel{
 		stackStatus: stat,
 	}
