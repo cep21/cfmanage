@@ -2,6 +2,7 @@ package cobracmds
 
 import (
 	"context"
+	"fmt"
 	"html/template"
 	"io"
 
