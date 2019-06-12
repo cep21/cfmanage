@@ -37,7 +37,7 @@ type versionCommandModel struct {
 
 func (v *versionCommandModel) VersionMessage() string {
 	if v.CurrentVersion != v.LatestVersion {
-		return "Your version is out of date.  Download a newer one from https://github.com/cep21/ecsrun"
+		return fmt.Sprintf("Your version is out of date.  Download a newer one from https://github.com/%s/%s", githubOwner, githubRepo)
 	}
 	return ""
 }
