@@ -1,0 +1,14 @@
+{
+  "StackName": "large-template",
+  "TemplateBody": "{{ .JSONStr (.File `./cloudformation/large/large.yaml`) }}",
+  "Capabilities": [
+    "CAPABILITY_NAMED_IAM"
+  ],
+  "Tags": [
+    {
+      "Key": "Environment",
+      "Value": "staging"
+    }
+  ],
+  "ChangeSetType": "GUESS"
+}

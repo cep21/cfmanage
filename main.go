@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"io"
+	"log"
 	"os"
 
 	"github.com/cep21/cfmanage/internal/awscache"
@@ -26,7 +27,9 @@ type Application struct {
 }
 
 func (a *Application) main() {
-	l := &logger.Logger{}
+	l := &logger.Logger{
+		Logger: log.New(a.Out, "cfmanage", log.LstdFlags),
+	}
 	Cleanup := &cleanup.Cleanup{}
 	rootCmd := cobracmds.RootCommand{
 		AWSCache: &awscache.AWSCache{

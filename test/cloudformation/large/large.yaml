@@ -1,0 +1,3404 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Some template
+Resources:
+  RedisCPUAlarm0:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 0
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm1:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 1
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm10:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 10
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm100:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 100
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm101:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 101
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm102:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 102
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm103:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 103
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm104:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 104
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm105:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 105
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm106:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 106
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm107:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 107
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm108:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 108
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm109:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 109
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm11:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 11
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm110:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 110
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm111:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 111
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm112:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 112
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm113:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 113
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm114:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 114
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm115:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 115
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm116:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 116
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm117:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 117
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm118:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 118
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm119:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 119
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm12:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 12
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm120:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 120
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm121:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 121
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm122:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 122
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm123:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 123
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm124:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 124
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm125:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 125
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm126:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 126
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm127:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 127
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm128:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 128
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm129:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 129
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm13:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 13
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm130:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 130
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm131:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 131
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm132:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 132
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm133:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 133
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm134:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 134
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm135:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 135
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm136:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 136
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm137:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 137
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm138:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 138
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm139:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 139
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm14:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 14
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm140:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 140
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm141:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 141
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm142:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 142
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm143:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 143
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm144:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 144
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm145:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 145
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm146:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 146
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm147:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 147
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm148:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 148
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm149:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 149
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm15:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 15
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm150:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 150
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm151:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 151
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm152:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 152
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm153:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 153
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm154:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 154
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm155:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 155
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm156:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 156
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm157:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 157
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm158:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 158
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm159:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 159
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm16:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 16
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm160:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 160
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm161:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 161
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm162:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 162
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm163:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 163
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm164:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 164
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm165:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 165
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm166:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 166
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm167:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 167
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm168:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 168
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm169:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 169
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm17:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 17
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm170:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 170
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm171:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 171
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm172:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 172
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm173:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 173
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm174:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 174
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm175:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 175
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm176:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 176
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm177:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 177
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm178:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 178
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm179:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 179
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm18:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 18
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm180:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 180
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm181:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 181
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm182:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 182
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm183:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 183
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm184:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 184
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm185:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 185
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm186:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 186
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm187:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 187
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm188:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 188
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm189:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 189
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm19:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 19
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm190:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 190
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm191:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 191
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm192:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 192
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm193:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 193
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm194:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 194
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm195:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 195
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm196:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 196
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm197:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 197
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm198:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 198
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm199:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 199
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm2:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 2
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm20:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 20
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm21:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 21
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm22:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 22
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm23:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 23
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm24:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 24
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm25:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 25
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm26:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 26
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm27:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 27
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm28:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 28
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm29:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 29
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm3:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 3
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm30:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 30
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm31:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 31
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm32:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 32
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm33:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 33
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm34:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 34
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm35:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 35
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm36:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 36
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm37:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 37
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm38:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 38
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm39:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 39
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm4:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 4
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm40:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 40
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm41:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 41
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm42:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 42
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm43:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 43
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm44:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 44
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm45:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 45
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm46:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 46
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm47:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 47
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm48:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 48
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm49:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 49
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm5:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 5
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm50:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 50
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm51:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 51
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm52:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 52
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm53:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 53
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm54:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 54
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm55:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 55
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm56:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 56
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm57:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 57
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm58:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 58
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm59:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 59
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm6:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 6
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm60:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 60
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm61:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 61
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm62:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 62
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm63:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 63
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm64:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 64
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm65:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 65
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm66:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 66
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm67:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 67
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm68:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 68
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm69:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 69
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm7:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 7
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm70:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 70
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm71:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 71
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm72:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 72
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm73:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 73
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm74:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 74
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm75:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 75
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm76:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 76
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm77:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 77
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm78:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 78
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm79:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 79
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm8:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 8
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm80:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 80
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm81:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 81
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm82:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 82
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm83:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 83
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm84:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 84
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm85:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 85
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm86:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 86
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm87:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 87
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm88:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 88
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm89:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 89
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm9:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 9
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm90:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 90
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm91:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 91
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm92:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 92
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm93:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 93
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm94:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 94
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm95:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 95
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm96:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 96
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm97:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 97
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm98:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 98
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+  RedisCPUAlarm99:
+    Properties:
+      ActionsEnabled: 'true'
+      AlarmActions: []
+      AlarmDescription: Alarm for high CPU usage in elasticache 0001-001
+      AlarmName: Large alarm name 99
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions: []
+      EvaluationPeriods: 30
+      InsufficientDataActions: []
+      MetricName: CPUUtilization
+      Namespace: AWS/ElastiCache
+      OKActions: []
+      Period: 60
+      Statistic: Average
+      Threshold: 100
+    Type: AWS::CloudWatch::Alarm
+

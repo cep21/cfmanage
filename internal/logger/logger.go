@@ -8,7 +8,7 @@ import (
 // Logger helps us verbose log output
 type Logger struct {
 	Verbosity int
-	log       *log.Logger
+	Logger    *log.Logger
 	mu        sync.Mutex
 }
 
@@ -22,5 +22,5 @@ func (l *Logger) Log(verbosity int, msg string, args ...interface{}) {
 	}
 	l.mu.Lock()
 	defer l.mu.Unlock()
-	l.log.Printf(msg, args...)
+	l.Logger.Printf(msg, args...)
 }

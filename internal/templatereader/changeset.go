@@ -17,6 +17,7 @@ type ChangesetInput struct {
 	cloudformation.CreateChangeSetInput
 	Profile string `json:"profile"`
 	Region  string `json:"region"`
+	Bucket  string `json:"bucket"`
 }
 
 func LoadCreateChangeSet(changesetFilename string, translator *CreateChangeSetTemplate, logger *logger.Logger) (*ChangesetInput, error) {

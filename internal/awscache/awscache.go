@@ -2,10 +2,15 @@ package awscache
 
 import (
 	"context"
+	"fmt"
 	"strconv"
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/aws/aws-sdk-go/aws/awserr"
+	"github.com/aws/aws-sdk-go/service/s3"
+	"github.com/aws/aws-sdk-go/service/s3/s3manager"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
@@ -128,31 +133,140 @@ func guessChangesetType(ctx context.Context, cloudformationClient *cloudformatio
 	return in
 }
 
-func (a *AWSClients) CreateChangesetWaitForStatus(ctx context.Context, in *cloudformation.CreateChangeSetInput, existingStack *cloudformation.Stack) (*cloudformation.DescribeChangeSetOutput, error) {
+func isAlreadyExistsException(err error) bool {
+	return isAWSError(err, "AlreadyExistsException")
+}
+
+func isAWSError(err error, code string) bool {
+	if err == nil {
+		return false
+	}
+	r := errors.Cause(err)
+	if ae, ok := r.(awserr.Error); ok {
+		return ae.Code() == code
+	}
+	return strings.Contains(r.Error(), code)
+}
+
+func (a *AWSClients) createChangeset(ctx context.Context, cf *cloudformation.CloudFormation, in *cloudformation.CreateChangeSetInput, hasAlreadyDeletedChangeSet bool) (*cloudformation.CreateChangeSetOutput, error) {
+	res, err := cf.CreateChangeSetWithContext(ctx, in)
+	if err == nil {
+		return res, nil
+	}
+	if !hasAlreadyDeletedChangeSet && isAlreadyExistsException(err) {
+		_, err := cf.DeleteChangeSetWithContext(ctx, &cloudformation.DeleteChangeSetInput{
+			ChangeSetName: in.ChangeSetName,
+			StackName:     in.StackName,
+		})
+		if err != nil {
+			return nil, errors.Wrap(err, "deleting changeset failed")
+		}
+		return a.createChangeset(ctx, cf, in, true)
+	}
+	return nil, errors.Wrap(err, "unable to create changeset")
+}
+
+func stringsReplaceAllRepeated(s string, old string, new string) string {
+	prev := len(s)
+	for len(s) > 0 {
+		s = strings.Replace(s, old, new, -1)
+		if prev == len(s) {
+			return s
+		}
+	}
+	return s
+}
+
+func sanitizeBucketName(s string) string {
+	// from https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-s3-bucket-naming-requirements.html
+	s = strings.ToLower(s)
+	s = strings.Map(func(r rune) rune {
+		switch {
+		case r >= 'a' && r <= 'z':
+			return r
+		case r >= '0' && r <= '9':
+			return r
+		case r == '.' || r == '-':
+			return r
+		}
+		return '-'
+	}, s)
+	if len(s) < 3 {
+		s = "aaa"
+	}
+	if s[0] == '-' || s[0] == '.' {
+		s = "a" + s
+	}
+	s = strings.TrimSuffix(s, "-")
+	s = stringsReplaceAllRepeated(s, "..", ".")
+	s = stringsReplaceAllRepeated(s, ".-", "-")
+	s = stringsReplaceAllRepeated(s, "-.", "-")
+	return s
+}
+
+func (a *AWSClients) FixTemplateBody(ctx context.Context, in *cloudformation.CreateChangeSetInput, bucket string, logger *logger.Logger) error {
+	if in.TemplateBody == nil {
+		return nil
+	}
+	tb := *in.TemplateBody
+	// Actual number is 51200 but we give ourselves some buffer
+	if len(tb) < 51100 {
+		return nil
+	}
+	logger.Log(1, "template body too large (%d): setting in s3", len(tb))
+	if bucket == "" {
+		bucket = sanitizeBucketName(fmt.Sprintf("cfmanage_%s", *in.StackName))
+		logger.Log(1, "Making bucket %s because no bucket set", bucket)
+		clients3 := s3.New(a.session)
+		out, err := clients3.CreateBucket(&s3.CreateBucketInput{
+			Bucket: &bucket,
+		})
+		if err != nil {
+			if !isAWSError(err, "BucketAlreadyOwnedByYou") {
+				return errors.Wrapf(err, "unable to create bucket %s correctly", bucket)
+			}
+			logger.Log(1, "bucket already owend by you")
+		} else {
+			logger.Log(1, "Bucket created with URL %s", *out.Location)
+		}
+	}
+	uploader := s3manager.NewUploader(a.session)
+	itemKey := fmt.Sprintf("cfmanage_%s_%s", *in.StackName, time.Now().UTC())
+	out, err := uploader.UploadWithContext(ctx, &s3manager.UploadInput{
+		Bucket: &bucket,
+		Key:    &itemKey,
+		Body:   strings.NewReader(tb),
+	})
+	if err != nil {
+		return errors.Wrapf(err, "unable to upload body to bucket %s", bucket)
+	}
+	logger.Log(1, "template body uploaded to %s", out.Location)
+	in.TemplateBody = nil
+	in.TemplateURL = &out.Location
+	a.cleanup.Add(func(ctx context.Context) error {
+		logger.Log(2, "Cleaning up %s/%s", bucket, itemKey)
+		clients3 := s3.New(a.session)
+		_, err := clients3.DeleteObject(&s3.DeleteObjectInput{
+			Bucket: &bucket,
+			Key:    &itemKey,
+		})
+		return errors.Wrapf(err, "Unable to delete bucket=%s key=%s", bucket, itemKey)
+
+	})
+	return nil
+}
+
+func (a *AWSClients) CreateChangesetWaitForStatus(ctx context.Context, in *cloudformation.CreateChangeSetInput, existingStack *cloudformation.Stack, logger *logger.Logger) (*cloudformation.DescribeChangeSetOutput, error) {
 	if in.ChangeSetName == nil {
 		in.ChangeSetName = aws.String("A" + strconv.FormatInt(time.Now().UnixNano(), 16))
 	}
 	in.ClientToken = aws.String(a.token())
 	cf := cloudformation.New(a.session)
 	in = guessChangesetType(ctx, cf, in)
-	res, err := cf.CreateChangeSetWithContext(ctx, in)
+
+	res, err := a.createChangeset(ctx, cf, in, false)
 	if err != nil {
-		if strings.Contains(err.Error(), "AlreadyExistsException") {
-			_, err := cf.DeleteChangeSetWithContext(ctx, &cloudformation.DeleteChangeSetInput{
-				ChangeSetName: in.ChangeSetName,
-				StackName:     in.StackName,
-			})
-			if err != nil {
-				return nil, err
-			}
-			// Clean up and try making again
-			res, err = cf.CreateChangeSetWithContext(ctx, in)
-			if err != nil {
-				return nil, err
-			}
-		} else {
-			return nil, err
-		}
+		return nil, errors.Wrap(err, "creating changeset failed")
 	}
 	a.cleanup.Add(func(ctx context.Context) error {
 		_, err := cf.DeleteChangeSetWithContext(ctx, &cloudformation.DeleteChangeSetInput{
@@ -177,7 +291,7 @@ func (a *AWSClients) CreateChangesetWaitForStatus(ctx context.Context, in *cloud
 			return nil
 		})
 	}
-	return a.waitForChangesetToFinishCreating(ctx, time.Second, cf, *res.Id, nil, nil)
+	return a.waitForChangesetToFinishCreating(ctx, time.Second, cf, *res.Id, logger, nil)
 }
 
 func (a *AWSClients) ExecuteChangeset(ctx context.Context, changesetARN string) error {

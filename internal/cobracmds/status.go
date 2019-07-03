@@ -122,7 +122,28 @@ func populateStatusCommand(ctx context.Context, createTemplate *templatereader.C
 			changesetInput: in,
 		}, nil
 	}
-	out, err := ses.CreateChangesetWaitForStatus(ctx, &in.CreateChangeSetInput, statStatus)
+	if err := ses.FixTemplateBody(ctx, &in.CreateChangeSetInput, in.Bucket, log); err != nil {
+		if statStatus == nil {
+			statStatus = &cloudformation.Stack{
+				StackStatus: aws.String("--DOES NOT EXIST--"),
+			}
+		}
+		return stackStatus{
+			Description:     emptyOnNil(statStatus.Description),
+			LastUpdated:     emptyOnNilTime(statStatus.LastUpdatedTime),
+			Template:        t,
+			StackFileName:   fname,
+			StackName:       *in.StackName,
+			StackStatus:     *statStatus.StackStatus,
+			AccountID:       readable(ses.AccountID()),
+			Region:          ses.Region(),
+			ChangesetError:  err,
+			ChangesetStatus: fmt.Sprintf("Unable to fix template body with s3: %s", err.Error()),
+			cfStack:         statStatus,
+			changesetInput:  in,
+		}, nil
+	}
+	out, err := ses.CreateChangesetWaitForStatus(ctx, &in.CreateChangeSetInput, statStatus, log)
 	if statStatus == nil {
 		statStatus = &cloudformation.Stack{
 			StackStatus: aws.String("--DOES NOT EXIST--"),

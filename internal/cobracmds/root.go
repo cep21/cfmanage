@@ -25,7 +25,7 @@ type RootCommand struct {
 	ContextFinder *ctxfinder.ContextFinder
 }
 
-const currentVersion = "1.2.1"
+const currentVersion = "1.3.0"
 
 func (s *RootCommand) Cobra() *cobra.Command {
 	cmd := &cobra.Command{
