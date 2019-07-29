@@ -151,7 +151,10 @@ func (s *executeCommand) modelPhase2(ctx context.Context, out io.Writer, inspect
 	}
 
 	// Now stream the changes
-	streamer := awscache.StackStreamer{}
+	streamer := awscache.StackStreamer{
+		PollInterval: s.AWSCache.PollInterval,
+		Logger:       s.Logger,
+	}
 	eg, egCtx := errgroup.WithContext(ctx)
 	streamInto := make(chan *cloudformation.StackEvent)
 	eg.Go(func() error {

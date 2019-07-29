@@ -8,6 +8,8 @@ import (
 	"sync"
 	"time"
 
+	"github.com/cep21/cfmanage/internal/aimd"
+
 	"github.com/aws/aws-sdk-go/aws/awserr"
 	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/aws/aws-sdk-go/service/s3/s3manager"
@@ -294,7 +296,7 @@ func (a *AWSClients) CreateChangesetWaitForStatus(ctx context.Context, in *cloud
 			return nil
 		})
 	}
-	return a.waitForChangesetToFinishCreating(ctx, a.getPollInterval(), cf, *res.Id, logger, nil)
+	return a.waitForChangesetToFinishCreating(ctx, cf, *res.Id, logger, nil)
 }
 
 func (a *AWSClients) ExecuteChangeset(ctx context.Context, changesetARN string) error {
@@ -315,11 +317,21 @@ func (a *AWSClients) CancelStackUpdate(ctx context.Context, stackName string) er
 	return errors.Wrapf(err, "unable to cancel stack update to %s", stackName)
 }
 
-func (a *AWSClients) waitForChangesetToFinishCreating(ctx context.Context, pollInterval time.Duration, cloudformationClient *cloudformation.CloudFormation, changesetARN string, logger *logger.Logger, cleanShutdown <-chan struct{}) (*cloudformation.DescribeChangeSetOutput, error) {
+func isThrottleError(err error) bool {
+	if err == nil {
+		return false
+	}
+	return strings.Contains(errors.Cause(err).Error(), "Throttling")
+}
+
+func (a *AWSClients) waitForChangesetToFinishCreating(ctx context.Context, cloudformationClient *cloudformation.CloudFormation, changesetARN string, logger *logger.Logger, cleanShutdown <-chan struct{}) (*cloudformation.DescribeChangeSetOutput, error) {
 	lastChangesetStatus := ""
+	backoff := aimd.Aimd{
+		Min: a.getPollInterval(),
+	}
 	for {
 		select {
-		case <-time.After(pollInterval):
+		case <-time.After(backoff.Get()):
 		case <-ctx.Done():
 			return nil, errors.Wrapf(ctx.Err(), "context died waiting for changeset %s", changesetARN)
 		case <-cleanShutdown:
@@ -329,8 +341,13 @@ func (a *AWSClients) waitForChangesetToFinishCreating(ctx context.Context, pollI
 			ChangeSetName: &changesetARN,
 		})
 		if err != nil {
+			if isThrottleError(err) {
+				backoff.OnError()
+				continue
+			}
 			return nil, errors.Wrapf(err, "unable to describe changeset %s", changesetARN)
 		}
+		backoff.OnOk()
 		stat := emptyOnNil(out.Status)
 		if stat != lastChangesetStatus {
 			logger.Log(1, "ChangeSet status set to %s: %s", stat, emptyOnNil(out.StatusReason))
@@ -354,18 +371,26 @@ func (a *AWSClients) getPollInterval() time.Duration {
 func (a *AWSClients) WaitForTerminalState(ctx context.Context, stackID string, log *logger.Logger) error {
 	lastStackStatus := ""
 	cfClient := cloudformation.New(a.session)
+	backoff := aimd.Aimd{
+		Min: a.getPollInterval(),
+	}
 	for {
 		select {
 		case <-ctx.Done():
 			return errors.Wrap(ctx.Err(), "context died waiting for terminal state")
-		case <-time.After(a.getPollInterval()):
+		case <-time.After(backoff.Get()):
 		}
 		descOut, err := cfClient.DescribeStacksWithContext(ctx, &cloudformation.DescribeStacksInput{
 			StackName: &stackID,
 		})
 		if err != nil {
+			if isThrottleError(err) {
+				backoff.OnError()
+				continue
+			}
 			return errors.Wrapf(err, "unable to describe stack %s", stackID)
 		}
+		backoff.OnOk()
 		if len(descOut.Stacks) != 1 {
 			return errors.Errorf("unable to correctly find stack %s", stackID)
 		}
