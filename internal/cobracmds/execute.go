@@ -6,6 +6,7 @@ import (
 	"io"
 	"os"
 	"os/signal"
+	"strings"
 	"syscall"
 	"time"
 
@@ -49,10 +50,10 @@ func (s *executeCommand) commandRun(cmd *cobra.Command, args []string) error {
 	template := args[0]
 	params := args[1]
 	if err := validateTemplate(s.T, template); err != nil {
-		return err
+		return errors.Wrap(err, "unable to validate template")
 	}
 	if err := validateParams(s.T, template, params); err != nil {
-		return err
+		return errors.Wrap(err, "unable to validate params")
 	}
 	ctx := s.ContextFinder.Ctx()
 	data, err := s.modelPhase1(ctx, template, params)
@@ -112,7 +113,7 @@ func (s *executeCommand) printStackEvents(ctx context.Context, out io.Writer, in
 	for {
 		select {
 		case <-ctx.Done():
-			return ctx.Err()
+			return errors.Wrap(ctx.Err(), "context timeout")
 		case event, ok := <-in:
 			if !ok {
 				return nil
@@ -125,7 +126,7 @@ func (s *executeCommand) printStackEvents(ctx context.Context, out io.Writer, in
 				ResourceType:         emptyOnNil(event.ResourceType),
 			}
 			if err := display(out, s.JSON, p); err != nil {
-				return err
+				return errors.Wrap(err, "unable to print out json")
 			}
 		}
 	}
@@ -133,10 +134,17 @@ func (s *executeCommand) printStackEvents(ctx context.Context, out io.Writer, in
 
 var errFinishedOk = errors.New("finished ok")
 
+func isErrFinishedOk(err error) bool {
+	if err == nil {
+		return false
+	}
+	return strings.Contains(errors.Cause(err).Error(), "finished ok")
+}
+
 func (s *executeCommand) modelPhase2(ctx context.Context, out io.Writer, inspectModel *inspectCommandModel) error {
 	ses, err := s.AWSCache.Session(inspectModel.changesetInput.Profile, inspectModel.changesetInput.Region)
 	if err != nil {
-		return err
+		return errors.Wrap(err, "unable to get session in modelPhase2")
 	}
 	err = ses.ExecuteChangeset(ctx, *inspectModel.changeset.ChangeSetId)
 	if err != nil {
@@ -168,10 +176,10 @@ func (s *executeCommand) modelPhase2(ctx context.Context, out io.Writer, inspect
 				ResourceType: "Program Signal caught",
 			}
 			if err := display(out, s.JSON, p); err != nil {
-				return err
+				return errors.Wrap(err, "unable to display json")
 			}
 			if err := ses.CancelStackUpdate(egCtx, *inspectModel.changeset.StackName); err != nil {
-				return err
+				return errors.Wrap(err, "unable to cancel stack update")
 			}
 		case <-egCtx.Done():
 		}
@@ -185,7 +193,7 @@ func (s *executeCommand) modelPhase2(ctx context.Context, out io.Writer, inspect
 		return actualErr
 	})
 	err = eg.Wait()
-	if err == errFinishedOk {
+	if isErrFinishedOk(err) {
 		return nil
 	}
 	return err

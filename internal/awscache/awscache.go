@@ -52,7 +52,7 @@ func (a *AWSCache) Session(profile string, region string) (*AWSClients, error) {
 		Config:  cfg,
 	})
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrapf(err, "unable to make session for profile %s", profile)
 	}
 	if a.sessionCache == nil {
 		a.sessionCache = make(map[cacheKey]*AWSClients)
@@ -279,14 +279,14 @@ func (a *AWSClients) CreateChangesetWaitForStatus(ctx context.Context, in *cloud
 		a.cleanup.Add(func(ctx context.Context) error {
 			finishingStack, err := a.DescribeStack(ctx, *in.StackName)
 			if err != nil {
-				return err
+				return errors.Wrapf(err, "unable to describe stack %s", *in.StackName)
 			}
 			if *finishingStack.StackStatus == "REVIEW_IN_PROGRESS" {
 				_, err := cf.DeleteStack(&cloudformation.DeleteStackInput{
 					ClientRequestToken: aws.String(a.token()),
 					StackName:          in.StackName,
 				})
-				return err
+				return errors.Wrapf(err, "unable to delete stack %s", *in.StackName)
 			}
 			return nil
 		})
@@ -300,7 +300,7 @@ func (a *AWSClients) ExecuteChangeset(ctx context.Context, changesetARN string) 
 		ChangeSetName:      &changesetARN,
 		ClientRequestToken: aws.String(a.token()),
 	})
-	return err
+	return errors.Wrapf(err, "unable to execute changeset %s", changesetARN)
 }
 
 func (a *AWSClients) CancelStackUpdate(ctx context.Context, stackName string) error {
@@ -309,7 +309,7 @@ func (a *AWSClients) CancelStackUpdate(ctx context.Context, stackName string) er
 		// Note: Stack cancels should *not* use the same client request token as the create request
 		StackName: &stackName,
 	})
-	return err
+	return errors.Wrapf(err, "unable to cancel stack update to %s", stackName)
 }
 
 func (a *AWSClients) waitForChangesetToFinishCreating(ctx context.Context, pollInterval time.Duration, cloudformationClient *cloudformation.CloudFormation, changesetARN string, logger *logger.Logger, cleanShutdown <-chan struct{}) (*cloudformation.DescribeChangeSetOutput, error) {
@@ -318,6 +318,7 @@ func (a *AWSClients) waitForChangesetToFinishCreating(ctx context.Context, pollI
 		select {
 		case <-time.After(pollInterval):
 		case <-ctx.Done():
+			return nil, errors.Wrapf(ctx.Err(), "context died waiting for changeset %s", changesetARN)
 		case <-cleanShutdown:
 			return nil, nil
 		}
@@ -325,7 +326,7 @@ func (a *AWSClients) waitForChangesetToFinishCreating(ctx context.Context, pollI
 			ChangeSetName: &changesetARN,
 		})
 		if err != nil {
-			return nil, errors.Wrap(err, "unable to describe changeset")
+			return nil, errors.Wrapf(err, "unable to describe changeset %s", changesetARN)
 		}
 		stat := emptyOnNil(out.Status)
 		if stat != lastChangesetStatus {
@@ -346,14 +347,14 @@ func (a *AWSClients) WaitForTerminalState(ctx context.Context, stackID string, p
 	for {
 		select {
 		case <-ctx.Done():
-			return ctx.Err()
+			return errors.Wrap(ctx.Err(), "context died waiting for terminal state")
 		case <-time.After(pollInterval):
 		}
 		descOut, err := cfClient.DescribeStacksWithContext(ctx, &cloudformation.DescribeStacksInput{
 			StackName: &stackID,
 		})
 		if err != nil {
-			return err
+			return errors.Wrapf(err, "unable to describe stack %s", stackID)
 		}
 		if len(descOut.Stacks) != 1 {
 			return errors.Errorf("unable to correctly find stack %s", stackID)
