@@ -29,6 +29,7 @@ type cacheKey struct {
 
 type AWSCache struct {
 	Cleanup      *cleanup.Cleanup
+	PollInterval time.Duration
 	mu           sync.Mutex
 	sessionCache map[cacheKey]*AWSClients
 }
@@ -58,15 +59,17 @@ func (a *AWSCache) Session(profile string, region string) (*AWSClients, error) {
 		a.sessionCache = make(map[cacheKey]*AWSClients)
 	}
 	a.sessionCache[itemKey] = &AWSClients{
-		session: ses,
-		cleanup: a.Cleanup,
+		session:      ses,
+		cleanup:      a.Cleanup,
+		pollInterval: a.PollInterval,
 	}
 	return a.sessionCache[itemKey], nil
 }
 
 type AWSClients struct {
-	session *session.Session
-	cleanup *cleanup.Cleanup
+	session      *session.Session
+	cleanup      *cleanup.Cleanup
+	pollInterval time.Duration
 
 	accountID oncecache.StringCache
 	myToken   string
@@ -291,7 +294,7 @@ func (a *AWSClients) CreateChangesetWaitForStatus(ctx context.Context, in *cloud
 			return nil
 		})
 	}
-	return a.waitForChangesetToFinishCreating(ctx, time.Second, cf, *res.Id, logger, nil)
+	return a.waitForChangesetToFinishCreating(ctx, a.getPollInterval(), cf, *res.Id, logger, nil)
 }
 
 func (a *AWSClients) ExecuteChangeset(ctx context.Context, changesetARN string) error {
@@ -340,15 +343,22 @@ func (a *AWSClients) waitForChangesetToFinishCreating(ctx context.Context, pollI
 	}
 }
 
+func (a *AWSClients) getPollInterval() time.Duration {
+	if a.pollInterval == 0 {
+		return time.Second
+	}
+	return a.pollInterval
+}
+
 // waitForTerminalState loops forever until either the context ends, or something fails
-func (a *AWSClients) WaitForTerminalState(ctx context.Context, stackID string, pollInterval time.Duration, log *logger.Logger) error {
+func (a *AWSClients) WaitForTerminalState(ctx context.Context, stackID string, log *logger.Logger) error {
 	lastStackStatus := ""
 	cfClient := cloudformation.New(a.session)
 	for {
 		select {
 		case <-ctx.Done():
 			return errors.Wrap(ctx.Err(), "context died waiting for terminal state")
-		case <-time.After(pollInterval):
+		case <-time.After(a.getPollInterval()):
 		}
 		descOut, err := cfClient.DescribeStacksWithContext(ctx, &cloudformation.DescribeStacksInput{
 			StackName: &stackID,

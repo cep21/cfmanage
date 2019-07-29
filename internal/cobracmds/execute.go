@@ -8,7 +8,6 @@ import (
 	"os/signal"
 	"strings"
 	"syscall"
-	"time"
 
 	"github.com/aws/aws-sdk-go/service/cloudformation"
 	"github.com/cep21/cfmanage/internal/awscache"
@@ -186,7 +185,7 @@ func (s *executeCommand) modelPhase2(ctx context.Context, out io.Writer, inspect
 		return nil
 	})
 	eg.Go(func() error {
-		actualErr := ses.WaitForTerminalState(egCtx, *inspectModel.changeset.StackId, time.Second, s.Logger)
+		actualErr := ses.WaitForTerminalState(egCtx, *inspectModel.changeset.StackId, s.Logger)
 		if actualErr == nil {
 			return errFinishedOk
 		}

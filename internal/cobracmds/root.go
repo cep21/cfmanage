@@ -41,6 +41,7 @@ func (s *RootCommand) Cobra() *cobra.Command {
 	cmd.PersistentFlags().IntVarP(&s.Logger.Verbosity, "verbosity", "v", 0, "Output verbosity.  Higher is more verbose")
 	cmd.PersistentFlags().DurationVarP(&s.ContextFinder.Timeout, "timeout", "t", 0, "If non zero, will time out commands on this value")
 	cmd.PersistentFlags().DurationVar(&s.Cleanup.CleanupTimeout, "cleantimeout", time.Second, "How long to wait for cleanup jobs to finish (in addition to the timeout of the script itself)")
+	cmd.PersistentFlags().DurationVar(&s.AWSCache.PollInterval, "pollinterval", time.Second, "How long to wait between polls to CloudFormation  to see if stacks are finished creating")
 	cmd.PersistentFlags().StringVarP(&s.T.BaseDir, "dir", "d", "cloudformation", "Directory containing cloudformation files")
 	cmd.PersistentFlags().BoolVarP(&s.JSONFormat, "json", "j", false, "If true, will output as JSON")
 	if s.Out != nil {
